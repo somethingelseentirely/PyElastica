@@ -6,6 +6,11 @@
 
 PyElastica is the python implementation of **Elastica**: an *open-source* project for simulating assemblies of slender, one-dimensional structures using Cosserat Rod theory.
 
+> **Disclaimer**
+>
+> This repository serves as an experimental Rust port of PyElastica. The rewrite is in progress and APIs may change without notice.
+> It is not an official project by the Elastica team.
+
 [![gallery][link-readme-gallary]][link-project-website]
 
 Visit [www.cosseratrods.org][link-project-website] for more information and learn about Elastica and Cosserat rod theory.
