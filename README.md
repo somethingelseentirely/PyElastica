@@ -1,15 +1,16 @@
 <div align='center'>
+ 
+> **Disclaimer**
+>
+> This repository serves as an experimental Rust port of PyElastica. The rewrite is in progress and APIs may change without notice.
+> It is not an official project by the Elastica team.
+
 <h1> PyElastica </h1>
 
 [![Build_status][badge-travis]][link-travis] [![CI][badge-CI]][link-CI] [![Documentation Status][badge-docs-status]][link-docs-status] [![codecov][badge-codecov]][link-codecov] [![Downloads][badge-pepy-download-count]][link-pepy-download-count] [![DOI][badge-doi]][link-doi] [![Binder][badge-binder]][link-binder] [![Gitter][badge-gitter]][link-gitter]
  </div>
 
 PyElastica is the python implementation of **Elastica**: an *open-source* project for simulating assemblies of slender, one-dimensional structures using Cosserat Rod theory.
-
-> **Disclaimer**
->
-> This repository serves as an experimental Rust port of PyElastica. The rewrite is in progress and APIs may change without notice.
-> It is not an official project by the Elastica team.
 
 [![gallery][link-readme-gallary]][link-project-website]
 
