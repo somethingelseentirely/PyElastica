@@ -115,7 +115,6 @@ def plot_video(
         with writer.saving(fig, video_name_3D, dpi):
             with plt.style.context("seaborn-whitegrid"):
                 for time_idx in tqdm(range(0, sim_time.shape[0], int(step))):
-
                     for rod_idx in range(n_visualized_rods):
                         inst_position, inst_radius = rod_history_unpacker(
                             rod_idx, time_idx
@@ -206,7 +205,6 @@ def plot_video(
         with writer.saving(fig, video_name_2D, dpi):
             with plt.style.context("seaborn-whitegrid"):
                 for time_idx in tqdm(range(0, sim_time.shape[0], int(step))):
-
                     for rod_idx in range(n_visualized_rods):
                         inst_position, inst_radius = rod_history_unpacker(
                             rod_idx, time_idx
@@ -297,7 +295,6 @@ def plot_video(
         with writer.saving(fig, video_name_2D, dpi):
             with plt.style.context("seaborn-whitegrid"):
                 for time_idx in tqdm(range(0, sim_time.shape[0], int(step))):
-
                     for rod_idx in range(n_visualized_rods):
                         inst_position, inst_radius = rod_history_unpacker(
                             rod_idx, time_idx
@@ -390,7 +387,6 @@ def plot_video(
         with writer.saving(fig, video_name_2D, dpi):
             with plt.style.context("seaborn-whitegrid"):
                 for time_idx in tqdm(range(0, sim_time.shape[0], int(step))):
-
                     for rod_idx in range(n_visualized_rods):
                         inst_position, inst_radius = rod_history_unpacker(
                             rod_idx, time_idx

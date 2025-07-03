@@ -78,7 +78,6 @@ def plot_video(
     with writer.saving(fig, video_name, dpi):
         with plt.style.context("seaborn-whitegrid"):
             for time_idx in tqdm(range(0, sim_time.shape[0], int(step))):
-
                 for rod_idx in range(n_visualized_rods):
                     inst_position, inst_radius = rod_history_unpacker(rod_idx, time_idx)
                     inst_position = 0.5 * (
@@ -187,7 +186,6 @@ def plot_video_2D(
     with writer.saving(fig, video_name_xy, dpi):
         with plt.style.context("seaborn-whitegrid"):
             for time_idx in tqdm(range(0, sim_time.shape[0], int(step))):
-
                 for rod_idx in range(n_visualized_rods):
                     inst_position, inst_radius = rod_history_unpacker(rod_idx, time_idx)
                     inst_position = 0.5 * (
@@ -244,7 +242,6 @@ def plot_video_2D(
     with writer.saving(fig, video_name_xz, dpi):
         with plt.style.context("seaborn-whitegrid"):
             for time_idx in tqdm(range(0, sim_time.shape[0], int(step))):
-
                 for rod_idx in range(n_visualized_rods):
                     inst_position, inst_radius = rod_history_unpacker(rod_idx, time_idx)
                     inst_position = 0.5 * (
@@ -277,7 +274,6 @@ def plot_video_2D(
 def plot_com_position_vs_time(
     rods_history, file_name="muscular_flagella_com_pos_vs_time.png"
 ):
-
     time = rods_history["time"]
     # rod_com_position = np.array(rods_history["com"]) * -1e3
     rod_com_position = np.array(rods_history["position"])[:, :, 9] * -1e3

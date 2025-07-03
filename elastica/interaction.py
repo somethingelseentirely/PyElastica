@@ -563,7 +563,6 @@ def apply_normal_force_numba_rigid_body(
     velocity_collection,
     external_forces,
 ):
-
     raise NotImplementedError(
         "This function is removed in v0.3.2. For cylinder plane contact please use: \n"
         "elastica._contact_functions._calculate_contact_forces_cylinder_plane() \n"

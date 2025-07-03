@@ -20,7 +20,6 @@ class FlagellaSimulator(
 def run_flagella(
     b_coeff, PLOT_FIGURE=False, SAVE_FIGURE=False, SAVE_VIDEO=False, SAVE_RESULTS=False
 ):
-
     flagella_sim = FlagellaSimulator()
 
     # setting up test params
@@ -97,9 +96,7 @@ def run_flagella(
             self.callback_params = callback_params
 
         def make_callback(self, system, time, current_step: int):
-
             if current_step % self.every == 0:
-
                 self.callback_params["time"].append(time)
                 self.callback_params["step"].append(current_step)
                 self.callback_params["position"].append(
@@ -154,7 +151,6 @@ def run_flagella(
 
 
 if __name__ == "__main__":
-
     # Options
     PLOT_FIGURE = True
     SAVE_FIGURE = False

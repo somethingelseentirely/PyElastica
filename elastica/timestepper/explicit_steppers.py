@@ -115,9 +115,9 @@ class ExplicitStepperMethods:
         _n_stages = len(__stages)
         _n_updates = len(__updates)
 
-        assert (
-            _n_stages == _n_updates
-        ), "Number of stages and updates should be equal to one another"
+        assert _n_stages == _n_updates, (
+            "Number of stages and updates should be equal to one another"
+        )
 
         self._stages_and_updates = tuple(zip(__stages, __updates))
 

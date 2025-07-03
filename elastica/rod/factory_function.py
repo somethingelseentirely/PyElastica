@@ -115,9 +115,9 @@ def allocate(
     _assert_dim(density_temp, 2, "density")
     density_array[:] = density_temp
     # Check if the elements of density are greater than tolerance
-    assert np.all(
-        density_array > Tolerance.atol()
-    ), " Density has to be greater than 0."
+    assert np.all(density_array > Tolerance.atol()), (
+        " Density has to be greater than 0."
+    )
 
     # Second moment of inertia
     A0 = np.pi * radius * radius
@@ -198,9 +198,9 @@ def allocate(
     if ring_rod_flag:  # wrap around the value in the last element
         bend_matrix[..., -1] = bend_matrix[..., 0]
     for i in range(0, MaxDimension.value()):
-        assert np.all(
-            bend_matrix[i, i, :] > Tolerance.atol()
-        ), " Bend matrix has to be greater than 0."
+        assert np.all(bend_matrix[i, i, :] > Tolerance.atol()), (
+            " Bend matrix has to be greater than 0."
+        )
 
     # Compute bend matrix in Voronoi Domain
     rest_lengths_temp_for_voronoi = (
@@ -212,7 +212,7 @@ def allocate(
     ) / (rest_lengths_temp_for_voronoi[1:] + rest_lengths_temp_for_voronoi[:-1])
 
     # Compute volume of elements
-    volume = np.pi * radius ** 2 * rest_lengths
+    volume = np.pi * radius**2 * rest_lengths
 
     # Compute mass of elements
     mass = np.zeros(n_nodes)

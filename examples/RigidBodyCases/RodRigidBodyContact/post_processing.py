@@ -26,7 +26,6 @@ def plot_video(
     *args,
     **kwargs,
 ):  # (time step, x/y/z, node)
-
     cylinder_start = np.array(cylinder_history["position"])[0, ...]
     cylinder_radius = kwargs.get("cylinder_radius")
     cylinder_height = kwargs.get("cylinder_height")
@@ -375,7 +374,6 @@ def plot_video_with_surface(
         with writer.saving(fig, video_name_3D, dpi):
             with plt.style.context("seaborn-whitegrid"):
                 for time_idx in tqdm(range(0, sim_time.shape[0], int(step))):
-
                     for rod_idx in range(n_visualized_rods):
                         inst_position, inst_radius = rod_history_unpacker(
                             rod_idx, time_idx
@@ -475,7 +473,6 @@ def plot_video_with_surface(
         with writer.saving(fig, video_name_2D, dpi):
             with plt.style.context("seaborn-whitegrid"):
                 for time_idx in tqdm(range(0, sim_time.shape[0], int(step))):
-
                     for rod_idx in range(n_visualized_rods):
                         inst_position, inst_radius = rod_history_unpacker(
                             rod_idx, time_idx
@@ -575,7 +572,6 @@ def plot_video_with_surface(
         with writer.saving(fig, video_name_2D, dpi):
             with plt.style.context("seaborn-whitegrid"):
                 for time_idx in tqdm(range(0, sim_time.shape[0], int(step))):
-
                     for rod_idx in range(n_visualized_rods):
                         inst_position, inst_radius = rod_history_unpacker(
                             rod_idx, time_idx
@@ -677,7 +673,6 @@ def plot_video_with_surface(
         with writer.saving(fig, video_name_2D, dpi):
             with plt.style.context("seaborn-whitegrid"):
                 for time_idx in tqdm(range(0, sim_time.shape[0], int(step))):
-
                     for rod_idx in range(n_visualized_rods):
                         inst_position, inst_radius = rod_history_unpacker(
                             rod_idx, time_idx
@@ -733,7 +728,6 @@ def plot_force_vs_energy(
     filename="energy_vs_force.png",
     SAVE_FIGURE=False,
 ):
-
     fig = plt.figure(figsize=(12, 10), frameon=True, dpi=150)
     axs = []
     axs.append(plt.subplot2grid((1, 1), (0, 0)))

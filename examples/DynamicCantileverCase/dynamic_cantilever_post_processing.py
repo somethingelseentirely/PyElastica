@@ -12,7 +12,6 @@ def plot_phase_space_with(
     PLOT_FIGURE=True,
     SAVE_FIGURE=False,
 ):
-
     fig = plt.figure(figsize=(20, 8), frameon=True, dpi=150)
 
     ax_freq = fig.add_subplot(121)

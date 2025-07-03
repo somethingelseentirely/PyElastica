@@ -1,5 +1,4 @@
-""" Handy utilities
-"""
+"""Handy utilities"""
 
 import functools
 import numpy as np

@@ -97,7 +97,11 @@ class SurfaceJointSideBySide(FreeJoint):
     def apply_forces(self, rod_one, index_one, rod_two, index_two):
         # TODO: documentation
 
-        (self.rod_one_rd2, self.rod_two_rd2, self.spring_force,) = self._apply_forces(
+        (
+            self.rod_one_rd2,
+            self.rod_two_rd2,
+            self.spring_force,
+        ) = self._apply_forces(
             self.k,
             self.nu,
             self.k_repulsive,
@@ -144,7 +148,6 @@ class SurfaceJointSideBySide(FreeJoint):
         rod_one_external_forces,
         rod_two_external_forces,
     ):
-
         rod_one_to_rod_two_connection_vec = (
             rod_one_director_collection[:, :, index_one].T
             @ rod_one_direction_vec_in_material_frame

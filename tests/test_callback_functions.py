@@ -185,9 +185,9 @@ class TestExportCallBackClass:
             callback.make_callback(mock_rod, 1, step_skip * 5)
             callback.clear()
             saved_path_name = callback.get_last_saved_path()
-            assert (
-                str(2) in saved_path_name
-            ), f"Total 3 file should be saved: {saved_path_name}"
+            assert str(2) in saved_path_name, (
+                f"Total 3 file should be saved: {saved_path_name}"
+            )
 
     @pytest.mark.parametrize("file_save_interval", [5, 10])
     def test_export_call_back_file_save_interval_param_ext(self, file_save_interval):

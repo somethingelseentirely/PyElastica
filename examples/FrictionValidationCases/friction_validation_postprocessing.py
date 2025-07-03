@@ -3,7 +3,6 @@ from matplotlib.colors import to_rgb
 
 
 def plot_friction_validation(results, SAVE_FIGURE, filename):
-
     sweep = []
     translational_energy = []
     rotational_energy = []
@@ -51,7 +50,6 @@ def plot_friction_validation(results, SAVE_FIGURE, filename):
 
 
 def plot_axial_friction_validation(results, SAVE_FIGURE, filename):
-
     sweep = []
     translational_energy = []
     rotational_energy = []

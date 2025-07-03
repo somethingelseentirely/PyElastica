@@ -45,7 +45,7 @@ E = 1e7
 nu = 4e-3
 shear_modulus = E / 2 * (0.5 + 1.0)
 poisson_ratio = 0.5
-nu_body = nu / density_body / (np.pi * base_radius_body ** 2)
+nu_body = nu / density_body / (np.pi * base_radius_body**2)
 
 direction = np.array([1.0, 0.0, 0.0])
 normal = np.array([0.0, 0.0, 1.0])
@@ -76,9 +76,7 @@ muscle_force_amplitudes = (
 # Set connection index of first node of each muscle with body
 muscle_start_connection_index = [4, 4, 33, 33, 23, 23, 61, 61]
 muscle_end_connection_index = []
-muscle_glue_connection_index = (
-    []
-)  # These are the middle node idx of muscles that are glued to body
+muscle_glue_connection_index = []  # These are the middle node idx of muscles that are glued to body
 muscle_rod_list = []
 """
 The muscle density is higher than the physiological one, since
@@ -104,10 +102,9 @@ below.
 muscle_radius = np.zeros((n_elem_muscle_group_one_to_three))
 muscle_radius[:] = 0.003  # First set tendon radius for whole rod.
 muscle_radius[4 * 3 : 9 * 3] = 0.006  # Change the radius of muscle elements
-nu_muscle /= density_muscle * np.pi * 0.003 ** 2
+nu_muscle /= density_muscle * np.pi * 0.003**2
 
 for i in range(int(n_muscle_fibers / 2)):
-
     index = muscle_start_connection_index[i]
     # Chose which side of body we are attaching the muscles. Note that these muscles are antagonistic pairs.
     # So they are at the opposite sides of the body and side_sign determines that.
@@ -171,7 +168,6 @@ muscle_radius[:] = 0.003  # First set tendon radius for whole rod.
 muscle_radius[4 * 3 : 9 * 3] = 0.006  # Change the radius of muscle elements
 
 for i in range(int(n_muscle_fibers / 2), n_muscle_fibers):
-
     index = muscle_start_connection_index[i]
     # Chose which side of body we are attaching the muscles. Note that these muscles are antagonistic pairs.
     # So they are at the opposite sides of the body and side_sign determines that.
@@ -367,7 +363,6 @@ class MuscularSnakeCallBack(ea.CallBackBaseClass):
         self.callback_params = callback_params
 
     def make_callback(self, system, time, current_step: int):
-
         if current_step % self.every == 0:
             self.callback_params["time"].append(time)
             self.callback_params["step"].append(current_step)

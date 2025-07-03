@@ -16,7 +16,6 @@ class RigidBodyBase(ABC):
     """
 
     def __init__(self):
-
         self.position_collection = NotImplementedError
         self.velocity_collection = NotImplementedError
         self.acceleration_collection = NotImplementedError

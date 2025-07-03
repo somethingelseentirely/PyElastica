@@ -233,7 +233,6 @@ class LaplaceDissipationFilter(DamperBase):
             self.filter_function = _filter_function_periodic_condition
 
     def dampen_rates(self, rod: RodType, time: float) -> None:
-
         self.filter_function(
             rod.velocity_collection,
             self.velocity_filter_term,

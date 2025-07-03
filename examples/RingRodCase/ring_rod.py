@@ -66,6 +66,7 @@ total_steps = int(final_time / time_step)
 rendering_fps = 60
 step_skip = int(1.0 / (rendering_fps * time_step))
 
+
 # Add call backs
 class RingRodCallBack(ea.CallBackBaseClass):
     """
@@ -78,9 +79,7 @@ class RingRodCallBack(ea.CallBackBaseClass):
         self.callback_params = callback_params
 
     def make_callback(self, system, time, current_step: int):
-
         if current_step % self.every == 0:
-
             self.callback_params["time"].append(time)
             self.callback_params["step"].append(current_step)
             self.callback_params["position"].append(system.position_collection.copy())

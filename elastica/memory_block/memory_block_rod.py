@@ -32,14 +32,12 @@ class MemoryBlockCosseratRod(
     """
 
     def __init__(self, systems: Sequence, system_idx_list):
-
         # separate straight and ring rods
         system_straight_rod = []
         system_ring_rod = []
         system_idx_list_ring_rod = []
         system_idx_list_straight_rod = []
         for k, system_to_be_added in enumerate(systems):
-
             if system_to_be_added.ring_rod_flag:
                 system_ring_rod.append(system_to_be_added)
                 system_idx_list_ring_rod.append(system_idx_list[k])
@@ -146,16 +144,16 @@ class MemoryBlockCosseratRod(
             self.start_idx_in_rod_nodes[n_straight_rods:] = (
                 self.periodic_boundary_nodes_idx[0, 0::3] + 1
             )
-            self.end_idx_in_rod_nodes[
-                n_straight_rods:
-            ] = self.periodic_boundary_nodes_idx[0, 1::3]
+            self.end_idx_in_rod_nodes[n_straight_rods:] = (
+                self.periodic_boundary_nodes_idx[0, 1::3]
+            )
 
             self.start_idx_in_rod_elems[n_straight_rods:] = (
                 self.periodic_boundary_elems_idx[0, 0::2] + 1
             )
-            self.end_idx_in_rod_elems[
-                n_straight_rods:
-            ] = self.periodic_boundary_elems_idx[0, 1::2]
+            self.end_idx_in_rod_elems[n_straight_rods:] = (
+                self.periodic_boundary_elems_idx[0, 1::2]
+            )
 
             self.start_idx_in_rod_voronoi[n_straight_rods:] = (
                 self.periodic_boundary_voronoi_idx[0, :] + 1

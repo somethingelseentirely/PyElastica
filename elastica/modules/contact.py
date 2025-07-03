@@ -55,7 +55,6 @@ class Contact:
         return _contact
 
     def _finalize_contact(self) -> None:
-
         # dev : the first indices stores the
         # (first_rod_idx, second_rod_idx)
         # to apply the contacts to
@@ -137,10 +136,10 @@ class _Contact:
         """
         from elastica.contact_forces import NoContact
 
-        assert issubclass(
-            contact_cls, NoContact
-        ), "{} is not a valid contact class. Did you forget to derive from NoContact?".format(
-            contact_cls
+        assert issubclass(contact_cls, NoContact), (
+            "{} is not a valid contact class. Did you forget to derive from NoContact?".format(
+                contact_cls
+            )
         )
         self._contact_cls = contact_cls
         self._args = args

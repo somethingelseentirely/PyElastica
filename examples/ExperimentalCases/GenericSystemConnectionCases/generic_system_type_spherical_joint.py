@@ -34,7 +34,7 @@ normal = np.array([0.0, 1.0, 0.0])
 roll_direction = np.cross(direction, normal)
 base_length = 0.2
 base_radius = 0.007
-base_area = np.pi * base_radius ** 2
+base_area = np.pi * base_radius**2
 density = 1750
 E = 3e7
 poisson_ratio = 0.5
@@ -95,9 +95,7 @@ spherical_joint_sim.constrain(rod1).using(
 # Connect rod 1 and rod 2
 spherical_joint_sim.connect(
     first_rod=rod1, second_rod=rod2, first_connect_idx=-1, second_connect_idx=0
-).using(
-    GenericSystemTypeFreeJoint, k=1e5, nu=0
-)  # k=kg/s2 nu=kg/s 1e-2
+).using(GenericSystemTypeFreeJoint, k=1e5, nu=0)  # k=kg/s2 nu=kg/s 1e-2
 # Connect rod 2 and cylinder
 spherical_joint_sim.connect(
     first_rod=rod2, second_rod=cylinder, first_connect_idx=-1, second_connect_idx=0

@@ -118,6 +118,7 @@ class FreeBC(ConstraintBase):
 class FreeRod(FreeBC):
     # Please clear this part beyond version 0.3.0
     """Deprecated 0.2.1: Same implementation as FreeBC"""
+
     warnings.warn(
         "FreeRod is deprecated and renamed to FreeBC. The deprecated name will be removed in the future.",
         DeprecationWarning,
@@ -230,6 +231,7 @@ class OneEndFixedBC(ConstraintBase):
 class OneEndFixedRod(OneEndFixedBC):
     # Please clear this part beyond version 0.3.0
     """Deprecated 0.2.1: Same implementation as OneEndFixedBC"""
+
     warnings.warn(
         "OneEndFixedRod is deprecated and renamed to OneEndFixedBC. The deprecated name will be removed in the future.",
         DeprecationWarning,
@@ -386,9 +388,7 @@ class GeneralConstraint(ConstraintBase):
                 1 - constraint_selector
             ) * position_collection[
                 ..., k
-            ] + constraint_selector * fixed_position_collection[
-                ..., i
-            ]
+            ] + constraint_selector * fixed_position_collection[..., i]
 
     @staticmethod
     @njit(cache=True)

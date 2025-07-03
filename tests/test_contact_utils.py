@@ -131,7 +131,6 @@ def test_norm_with_verified_values():
     [(0.5, 1), (1.5, 1.5), (2.5, 2)],
 )
 def test_clip_with_verified_values(x, result):
-
     "Function to test the _clip function"
 
     """_clip is a simple comparison function;
@@ -147,7 +146,6 @@ def test_clip_with_verified_values(x, result):
     [(0.5, 1), (1.5, 0), (2.5, 1)],
 )
 def test_out_of_bounds_with_verified_values(x, result):
-
     "Function to test the _out_of_bounds function"
 
     """_out_of_bounds returns 1 if x < low or x > high, else returns 0"""
@@ -230,7 +228,6 @@ def test_aabbs_not_intersecting():
 
 
 def mock_rod_init(self):
-
     "Initializing Rod"
 
     """
@@ -255,7 +252,6 @@ def mock_rod_init(self):
 
 
 def mock_cylinder_init(self):
-
     "Initializing Cylinder"
 
     """
@@ -281,7 +277,6 @@ def mock_cylinder_init(self):
 
 
 def mock_sphere_init(self):
-
     "Initializing Sphere"
 
     """

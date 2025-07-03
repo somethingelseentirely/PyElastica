@@ -35,20 +35,16 @@ class KnotTheoryCompatibleProtocol(Protocol):
     """
 
     @property
-    def position_collection(self) -> np.ndarray:
-        ...
+    def position_collection(self) -> np.ndarray: ...
 
     @property
-    def director_collection(self) -> np.ndarray:
-        ...
+    def director_collection(self) -> np.ndarray: ...
 
     @property
-    def radius(self) -> np.ndarray:
-        ...
+    def radius(self) -> np.ndarray: ...
 
     @property
-    def base_length(self) -> np.ndarray:
-        ...
+    def base_length(self) -> np.ndarray: ...
 
 
 class KnotTheory:
@@ -353,7 +349,6 @@ def _compute_writhe(center_line):
     for k in range(time):
         for i in range(blocksize - 2):
             for j in range(i + 1, blocksize - 1):
-
                 point_one = center_line[k, :, i]
                 point_two = center_line[k, :, i + 1]
                 point_three = center_line[k, :, j]
@@ -569,7 +564,6 @@ def _compute_link(center_line, auxiliary_line):
     for k in range(timesize):
         for i in range(blocksize_center_line - 1):
             for j in range(blocksize_auxiliary_line - 1):
-
                 point_one = center_line[k, :, i]
                 point_two = center_line[k, :, i + 1]
                 point_three = auxiliary_line[k, :, j]

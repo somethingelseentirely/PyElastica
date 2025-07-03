@@ -26,7 +26,6 @@ def construct_memory_block_structures(systems):
     temp_list_for_rigid_body_systems_idx = []
 
     for system_idx, sys_to_be_added in enumerate(systems):
-
         if issubclass(sys_to_be_added.__class__, RodBase):
             temp_list_for_cosserat_rod_systems.append(sys_to_be_added)
             temp_list_for_cosserat_rod_systems_idx.append(system_idx)

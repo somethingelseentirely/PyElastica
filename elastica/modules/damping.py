@@ -119,10 +119,10 @@ class _Damper:
         -------
 
         """
-        assert issubclass(
-            damper_cls, DamperBase
-        ), "{} is not a valid damper. Damper must be driven from DamperBase.".format(
-            damper_cls
+        assert issubclass(damper_cls, DamperBase), (
+            "{} is not a valid damper. Damper must be driven from DamperBase.".format(
+                damper_cls
+            )
         )
         self._damper_cls = damper_cls
         self._args = args

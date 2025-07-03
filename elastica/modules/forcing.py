@@ -133,10 +133,10 @@ class _ExtForceTorque:
         """
         from elastica.external_forces import NoForces
 
-        assert issubclass(
-            forcing_cls, NoForces
-        ), "{} is not a valid forcing. Did you forget to derive from NoForces?".format(
-            forcing_cls
+        assert issubclass(forcing_cls, NoForces), (
+            "{} is not a valid forcing. Did you forget to derive from NoForces?".format(
+                forcing_cls
+            )
         )
         self._forcing_cls = forcing_cls
         self._args = args
