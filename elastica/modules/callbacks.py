@@ -119,10 +119,10 @@ class _CallBack:
         -------
 
         """
-        assert issubclass(
-            callback_cls, CallBackBaseClass
-        ), "{} is not a valid call back. Did you forget to derive from CallBackClass?".format(
-            callback_cls
+        assert issubclass(callback_cls, CallBackBaseClass), (
+            "{} is not a valid call back. Did you forget to derive from CallBackClass?".format(
+                callback_cls
+            )
         )
         self._callback_cls = callback_cls
         self._args = args

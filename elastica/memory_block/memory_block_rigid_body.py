@@ -8,7 +8,6 @@ from elastica.rigidbody.data_structures import _RigidRodSymplecticStepperMixin
 
 class MemoryBlockRigidBody(RigidBodyBase, _RigidRodSymplecticStepperMixin):
     def __init__(self, systems: Sequence, system_idx_list: Sequence[np.int64]):
-
         self.n_bodies = len(systems)
         self.n_elems = self.n_bodies
         self.n_nodes = self.n_elems

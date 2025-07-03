@@ -794,7 +794,6 @@ def _calculate_contact_forces_cylinder_plane(
     velocity_collection,
     external_forces,
 ):
-
     # Compute plane response force
     # total_forces = system.internal_forces + system.external_forces
     total_forces = external_forces

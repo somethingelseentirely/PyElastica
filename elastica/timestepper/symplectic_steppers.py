@@ -31,7 +31,7 @@ class _SystemInstanceStepper:
     def do_step(
         TimeStepper, _steps_and_prefactors, System, time: np.float64, dt: np.float64
     ):
-        for (kin_prefactor, kin_step, dyn_step) in _steps_and_prefactors[:-1]:
+        for kin_prefactor, kin_step, dyn_step in _steps_and_prefactors[:-1]:
             kin_step(TimeStepper, System, time, dt)
             time += kin_prefactor(TimeStepper, dt)
             System.update_internal_forces_and_torques(time)
@@ -71,8 +71,7 @@ class _SystemCollectionStepper:
         -------
 
         """
-        for (kin_prefactor, kin_step, dyn_step) in _steps_and_prefactors[:-1]:
-
+        for kin_prefactor, kin_step, dyn_step in _steps_and_prefactors[:-1]:
             for system in SystemCollection._memory_blocks:
                 kin_step(TimeStepper, system, time, dt)
 
@@ -164,18 +163,18 @@ class SymplecticStepperMethods:
         mirror(self._steps)
         mirror(self._prefactors)
 
-        assert (
-            len(self._steps) == 2 * len(self._prefactors) - 1
-        ), "Size mismatch in the number of steps and prefactors provided for a Symplectic Stepper!"
+        assert len(self._steps) == 2 * len(self._prefactors) - 1, (
+            "Size mismatch in the number of steps and prefactors provided for a Symplectic Stepper!"
+        )
 
         self._kinematic_steps = self._steps[::2]
         self._dynamic_steps = self._steps[1::2]
 
         # Avoid this check for MockClasses
         if len(self._kinematic_steps) > 0:
-            assert (
-                len(self._kinematic_steps) == len(self._dynamic_steps) + 1
-            ), "Size mismatch in the number of kinematic and dynamic steps provided for a Symplectic Stepper!"
+            assert len(self._kinematic_steps) == len(self._dynamic_steps) + 1, (
+                "Size mismatch in the number of kinematic and dynamic steps provided for a Symplectic Stepper!"
+            )
 
         from itertools import zip_longest
 
@@ -231,7 +230,6 @@ class PositionVerlet:
         )
 
     def _first_dynamic_step(self, System, time: np.float64, dt: np.float64):
-
         overload_operator_dynamic_numba(
             System.dynamic_states.rate_collection,
             System.dynamic_rates(time, dt),

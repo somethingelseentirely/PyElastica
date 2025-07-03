@@ -382,9 +382,7 @@ class TestConnectionsMixin:
         # Constrain any and all systems
         system_collection_with_connections_and_indices.connect(
             mock_rod_one, mock_rod_two, 0, 0
-        ).using(
-            MockConnect, 2, 42
-        )  # with connection indices
+        ).using(MockConnect, 2, 42)  # with connection indices
         return system_collection_with_connections_and_indices, MockConnect
 
     def test_connect_call_on_systems(self, load_rod_with_connects_and_indices):

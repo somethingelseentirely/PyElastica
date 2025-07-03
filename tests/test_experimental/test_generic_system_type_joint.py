@@ -87,7 +87,6 @@ def test_generic_free_joint(
     point_system_one: np.ndarray,
     point_system_two: np.ndarray,
 ):
-
     # Origin of the systems
     origin1 = np.array([0.0, 0.0, 0.0])
     origin2 = np.array([1.0, 0.0, 0.0])

@@ -100,7 +100,6 @@ def analytical_solution(L, n_elem=10000):
 
 
 def plot_helicalbuckling(rod, SAVE_FIGURE):
-
     plt.figure()
     plt.axes(projection="3d")
     plt.plot(

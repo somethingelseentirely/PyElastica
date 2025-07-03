@@ -8,7 +8,6 @@ from elastica.utils import Tolerance
 
 class MockRigidBody:
     def __init__(self):
-
         self.radius = np.random.randn()
         self.length = np.random.randn()
         self.density = np.random.randn()
@@ -52,7 +51,6 @@ def test_block_structure_scalar_validity(n_rods):
     )
 
     for i in range(n_rods):
-
         # radius
         assert np.shares_memory(block_structure.radius, world_bodies[i].radius)
         assert np.shares_memory(
@@ -131,7 +129,6 @@ def test_block_structure_vectors_validity(n_rods):
     )
 
     for i in range(n_rods):
-
         # position collection
         assert np.shares_memory(
             block_structure.position_collection, world_bodies[i].position_collection
@@ -257,7 +254,6 @@ def test_block_structure_symplectic_stepper_variables_validity(n_rods):
     )
 
     for i in range(n_rods):
-
         # velocity collection
         assert np.shares_memory(
             block_structure.velocity_collection, world_bodies[i].velocity_collection

@@ -496,7 +496,6 @@ class EndpointForcesSinusoidal(NoForces):
         self.ramp_up_time = ramp_up_time
 
     def apply_forces(self, system: SystemType, time=0.0):
-
         if time < self.ramp_up_time:
             # When time smaller than ramp up time apply the force in normal direction
             # First pull the rod upward or downward direction some time.

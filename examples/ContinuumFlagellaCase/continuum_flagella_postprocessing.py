@@ -9,7 +9,6 @@ def plot_velocity(
     filename="continuum_flagella_velocity.png",
     SAVE_FIGURE=False,
 ):
-
     time_per_period = np.array(plot_params["time"]) / period
     avg_velocity = np.array(plot_params["avg_velocity"])
 
@@ -66,7 +65,6 @@ def plot_video(
 
 
 def compute_projected_velocity(plot_params: dict, period):
-
     time_per_period = np.array(plot_params["time"]) / period
     avg_velocity = np.array(plot_params["avg_velocity"])
     center_of_mass = np.array(plot_params["center_of_mass"])

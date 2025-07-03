@@ -126,9 +126,7 @@ def run_snake(
             self.callback_params = callback_params
 
         def make_callback(self, system, time, current_step: int):
-
             if current_step % self.every == 0:
-
                 self.callback_params["time"].append(time)
                 self.callback_params["step"].append(current_step)
                 self.callback_params["position"].append(
@@ -188,7 +186,6 @@ def run_snake(
 
 
 if __name__ == "__main__":
-
     # Options
     PLOT_FIGURE = True
     SAVE_FIGURE = True

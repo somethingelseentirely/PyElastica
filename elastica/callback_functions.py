@@ -74,9 +74,7 @@ class MyCallBack(CallBackBaseClass):
         self.callback_params = callback_params
 
     def make_callback(self, system, time, current_step: int):
-
         if current_step % self.sample_every == 0:
-
             self.callback_params["time"].append(time)
             self.callback_params["step"].append(current_step)
             self.callback_params["position"].append(system.position_collection.copy())
@@ -148,9 +146,9 @@ class ExportCallBack(CallBackBaseClass):
             logging.warning(
                 f"We recommend (step_skip={step_skip}) at least {MIN_STEP_SKIP}"
             )
-        assert (
-            method in ExportCallBack.AVAILABLE_METHOD
-        ), f"The exporting method ({method}) is not supported. Please use one of {ExportCallBack.AVAILABLE_METHOD}."
+        assert method in ExportCallBack.AVAILABLE_METHOD, (
+            f"The exporting method ({method}) is not supported. Please use one of {ExportCallBack.AVAILABLE_METHOD}."
+        )
 
         # Create directory
         if os.path.exists(directory):

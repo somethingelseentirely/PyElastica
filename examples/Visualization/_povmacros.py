@@ -1,4 +1,4 @@
-""" POVray macros for pyelastica
+"""POVray macros for pyelastica
 
 This module includes utility methods to support POVray rendering.
 
@@ -58,7 +58,7 @@ def pyelastica_rod(
     lines.append("sphere_sweep {")
     lines.append(tab + f"{interpolation} {num_element}")
     for i in range(num_element):
-        lines.append(tab + f",<{x[0,i]},{x[1,i]},{x[2,i]}>,{r[i]}")
+        lines.append(tab + f",<{x[0, i]},{x[1, i]},{x[2, i]}>,{r[i]}")
     lines.append(tab + "texture{")
     lines.append(tab + tab + "pigment{ color %s transmit %f }" % (color, transmit))
     lines.append(tab + tab + "finish{ phong 1 }")

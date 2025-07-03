@@ -157,9 +157,7 @@ def run_snake(
             self.callback_params = callback_params
 
         def make_callback(self, system, time, current_step: int):
-
             if current_step % self.every == 0:
-
                 self.callback_params["time"].append(time)
                 self.callback_params["step"].append(current_step)
                 self.callback_params["position"].append(
@@ -206,7 +204,6 @@ def run_snake(
             )
 
     if SAVE_RESULTS:
-
         filename = "continuum_snake.dat"
         file = open(filename, "wb")
         pickle.dump(pp_list, file)

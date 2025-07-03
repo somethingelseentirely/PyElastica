@@ -98,7 +98,6 @@ class MuscularFlagellaConnection(FreeJoint):
         return Torqueaverage
 
     def apply_torques(self, rod_one, index_one, rod_two, index_two):
-
         self._apply_torques(
             index_one,
             self.torque,

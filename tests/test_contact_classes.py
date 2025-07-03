@@ -22,7 +22,6 @@ from elastica.contact_utils import (
 
 
 def mock_rod_init(self):
-
     "Initializing Rod"
     "Details of initialization are given in test_contact_specific_functions.py"
 
@@ -43,7 +42,6 @@ def mock_rod_init(self):
 
 
 def mock_cylinder_init(self):
-
     "Initializing Cylinder"
     "Details of initialization are given in test_contact_specific_functions.py"
 
@@ -60,7 +58,6 @@ def mock_cylinder_init(self):
 
 
 def mock_sphere_init(self):
-
     "Initializing Sphere"
     "Details of initialization are given in test_contact_specific_functions.py"
 
@@ -76,7 +73,6 @@ def mock_sphere_init(self):
 
 
 def mock_plane_init(self):
-
     "Initializing Plane"
 
     self.normal = np.asarray([1.0, 0.0, 0.0]).reshape(3)
@@ -132,7 +128,6 @@ class TestRodCylinderContact:
     def test_contact_rod_cylinder_with_collision_with_k_without_nu_and_friction(
         self,
     ):
-
         "Testing Rod Cylinder Contact wrapper with Collision with analytical verified values"
 
         mock_rod = MockRod()
@@ -158,7 +153,6 @@ class TestRodCylinderContact:
     def test_contact_rod_cylinder_with_collision_with_nu_without_k_and_friction(
         self,
     ):
-
         "Testing Rod Cylinder Contact wrapper with Collision with analytical verified values"
 
         mock_rod = MockRod()
@@ -188,7 +182,6 @@ class TestRodCylinderContact:
     def test_contact_rod_cylinder_with_collision_with_k_and_nu_without_friction(
         self,
     ):
-
         "Testing Rod Cylinder Contact wrapper with Collision with analytical verified values"
 
         mock_rod = MockRod()
@@ -218,7 +211,6 @@ class TestRodCylinderContact:
     def test_contact_rod_cylinder_with_collision_with_k_and_nu_and_friction(
         self,
     ):
-
         "Testing Rod Cylinder Contact wrapper with Collision with analytical verified values"
 
         mock_rod = MockRod()
@@ -254,7 +246,6 @@ class TestRodCylinderContact:
         )
 
     def test_contact_rod_cylinder_without_collision(self):
-
         "Testing Rod Cylinder Contact wrapper without Collision with analytical verified values"
 
         mock_rod = MockRod()
@@ -321,7 +312,6 @@ class TestRodRodContact:
         ) == str(excinfo.value)
 
     def test_contact_with_two_rods_with_collision_with_k_without_nu(self):
-
         "Testing Rod Rod Contact wrapper with two rods with analytical verified values"
         "Test values have been copied from 'test_contact_specific_functions.py/test_calculate_contact_forces_rod_rod()'"
 
@@ -343,7 +333,6 @@ class TestRodRodContact:
         )
 
     def test_contact_with_two_rods_with_collision_without_k_with_nu(self):
-
         "Testing Rod Rod Contact wrapper with two rods with analytical verified values"
         "Test values have been copied from 'test_contact_specific_functions.py/test_calculate_contact_forces_rod_rod()'"
 
@@ -373,7 +362,6 @@ class TestRodRodContact:
         )
 
     def test_contact_with_two_rods_with_collision_with_k_and_nu(self):
-
         "Testing RodRod Contact wrapper with two rods with analytical verified values"
         "Test values have been copied from 'test_contact_specific_functions.py/test_calculate_contact_forces_rod_rod()'"
 
@@ -403,7 +391,6 @@ class TestRodRodContact:
         )
 
     def test_contact_with_two_rods_without_collision(self):
-
         "Testing Rod Rod Contact wrapper with two rods with analytical verified values"
 
         mock_rod_one = MockRod()
@@ -470,7 +457,6 @@ class TestRodSelfContact:
         ).format(mock_rod_one.__class__, mock_rod_two.__class__) == str(excinfo.value)
 
     def test_self_contact_with_rod_self_collision(self):
-
         "Testing Self Contact wrapper rod self collision with analytical verified values"
 
         mock_rod = MockRod()
@@ -506,7 +492,6 @@ class TestRodSelfContact:
         )
 
     def test_self_contact_with_rod_no_self_collision(self):
-
         "Testing Self Contact wrapper rod no self collision with analytical verified values"
 
         mock_rod = MockRod()
@@ -561,7 +546,6 @@ class TestRodSphereContact:
     def test_contact_rod_sphere_with_collision_with_k_without_nu_and_friction(
         self,
     ):
-
         "Testing Rod Sphere Contact wrapper with Collision with analytical verified values"
 
         mock_rod = MockRod()
@@ -850,7 +834,6 @@ class TestRodPlaneWithAnisotropicFriction:
         force_mag_long=0.0,  # forces along the rod
         force_mag_side=0.0,  # side forces on the rod
     ):
-
         # create rod
         rod = MockRod()
         start = np.array([0.0, 0.0, 0.0])
@@ -998,12 +981,12 @@ class TestRodPlaneWithAnisotropicFriction:
         correct_forces = np.zeros((3, 3))
         if np.sign(force_mag) < 0:
             correct_forces[2] = (
-                external_forces_collection[2]
-            ) - 1.0 * external_forces_collection[1]
+                (external_forces_collection[2]) - 1.0 * external_forces_collection[1]
+            )
         else:
             correct_forces[2] = (
-                external_forces_collection[2]
-            ) + 1.0 * external_forces_collection[1]
+                (external_forces_collection[2]) + 1.0 * external_forces_collection[1]
+            )
 
         assert_allclose(correct_forces, rod.external_forces, atol=Tolerance.atol())
 

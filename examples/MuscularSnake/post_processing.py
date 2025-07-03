@@ -119,7 +119,6 @@ def plot_video_with_surface(
         with writer.saving(fig, video_name_3D, dpi):
             with plt.style.context("seaborn-v0_8-whitegrid"):
                 for time_idx in tqdm(range(0, sim_time.shape[0], int(step))):
-
                     for rod_idx in range(n_visualized_rods):
                         inst_position, inst_radius = rod_history_unpacker(
                             rod_idx, time_idx
@@ -210,7 +209,6 @@ def plot_video_with_surface(
         with writer.saving(fig, video_name_2D, dpi):
             with plt.style.context("seaborn-v0_8-whitegrid"):
                 for time_idx in tqdm(range(0, sim_time.shape[0], int(step))):
-
                     for rod_idx in range(n_visualized_rods):
                         inst_position, inst_radius = rod_history_unpacker(
                             rod_idx, time_idx
@@ -301,7 +299,6 @@ def plot_video_with_surface(
         with writer.saving(fig, video_name_2D, dpi):
             with plt.style.context("seaborn-v0_8-whitegrid"):
                 for time_idx in tqdm(range(0, sim_time.shape[0], int(step))):
-
                     for rod_idx in range(n_visualized_rods):
                         inst_position, inst_radius = rod_history_unpacker(
                             rod_idx, time_idx
@@ -394,7 +391,6 @@ def plot_video_with_surface(
         with writer.saving(fig, video_name_2D, dpi):
             with plt.style.context("seaborn-v0_8-whitegrid"):
                 for time_idx in tqdm(range(0, sim_time.shape[0], int(step))):
-
                     for rod_idx in range(n_visualized_rods):
                         inst_position, inst_radius = rod_history_unpacker(
                             rod_idx, time_idx
@@ -471,7 +467,6 @@ def plot_snake_velocity(
 
 
 def compute_projected_velocity(plot_params: dict, period):
-
     time_per_period = np.array(plot_params["time"]) / period
     avg_velocity = np.array(plot_params["avg_velocity"])
     center_of_mass = np.array(plot_params["center_of_mass"])

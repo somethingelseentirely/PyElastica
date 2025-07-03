@@ -70,7 +70,6 @@ class TestRestartFunctionsWithFeaturesUsingCosseratRod:
         for idx, correct_rod in enumerate(rod_list):
             test_rod = simulator_class[idx]
             for key, value in correct_rod.__dict__.items():
-
                 # get correct values
                 correct_value = getattr(correct_rod, key)
 
@@ -150,7 +149,6 @@ class TestRestartFunctionsWithFeaturesUsingCosseratRod:
 
     @pytest.mark.parametrize("final_time", [0.2, 1.0])
     def test_save_restart_run_sim(self, final_time):
-
         # First half of simulation
         _ = self.run_sim(
             final_time / 2, load_from_restart=False, save_data_restart=True
@@ -219,7 +217,6 @@ class TestRestartFunctionsWithFeaturesUsingRigidBodies:
         for idx, correct_cylinder in enumerate(cylinder_list):
             test_cylinder = simulator_class[idx]
             for key, value in correct_cylinder.__dict__.items():
-
                 # get correct values
                 correct_value = getattr(correct_cylinder, key)
 
