@@ -35,8 +35,8 @@ The following is a set of guidelines for contributing to PyElastica. These are m
 
 ### Setup development environment
 
-Below are steps of how to setup development environment. We mainly use `poetry` to manage
-the project, although most of the important commands will be provided in `Makefile`.
+Below are steps of how to setup development environment. We now rely on [`uv`](https://github.com/astral-sh/uv)
+to manage dependencies and use simple scripts instead of a Makefile.
 
 1. Clone!
 
@@ -52,19 +52,26 @@ conda activate pyelastica-dev
 conda install python==3.10
 ```
 
-3. Setup [`poetry`](https://python-poetry.org) and `dependencies`!
+3. Install [`uv`](https://github.com/astral-sh/uv) and project dependencies.
 
 ```bash
-make poetry-download
-make install
-make pre-commit-install
+pip install uv
+uv venv venv
+source venv/bin/activate
+uv add ruff pytest pre-commit
+uv pip install -e .
+pre-commit install
 ```
 
-If you are planning to contribute to the examples,
-extra dependencies can be installed using `make install_examples_dependencies`.
+Running `./scripts/preflight.sh` will automatically install any missing
+development dependencies (ruff, pytest and the project itself) before
+running formatting checks and tests.
 
-If you are planning to contribute on documentation, extra dependencies can be installed
-using `poetry install -E docs`.
+If you are planning to contribute to the examples,
+install extras with `uv pip install -e .[examples]`.
+
+If you are planning to contribute on documentation, extras can be installed
+with `uv pip install -e .[docs]`.
 The detail instruction is included
 [here](https://github.com/GazzolaLab/PyElastica/blob/master/docs/README.md).
 
@@ -138,20 +145,15 @@ If you are interested in hearing more, please contact one of our the maintainer.
 Please follow these steps to have your contribution considered by the maintainers:
 
 1. Follow the [styleguides](#styleguides)
-2. If you add a new dependency, add it to the `pyproject.toml` and then run the following line from the top directory:
+2. If you add a new dependency, update `pyproject.toml` (or run `uv add <name>`) and reinstall:
 
-    `
-   make install_with_new_dependency
-   `
-
-	This will update `poetry.lock` to ensure version control. Don't forget to commit `.lock` and `.toml` files for Poetry in this case!
-3. Before you submit your pull request run [pytests](https://pypi.org/project/pytest/) and make sure that all tests pass.
-
-    In order to run pytest, run the following line from the top directory:
-
-    `
-    make test
-    `
+```bash
+uv pip install -e .
+```
+3. Before you submit your pull request, run `./scripts/preflight.sh` from the
+   repository root. This script installs any missing tools, formats modified
+   files, and runs the full test suite. Use `./scripts/devtest.sh` for quicker
+   test iterations during development.
 
 4. After you submit your pull request, verify that all status checks are passing <details><summary>What if the status checks are failing?</summary>If a status check is failing, and you believe that the failure is unrelated to your change, please leave a comment on the pull request explaining why you believe the failure is unrelated. A maintainer will re-run the status check for you. If we conclude that the failure was a false positive, then we will open an issue to track that problem with our status check suite.</details>
 
@@ -171,11 +173,19 @@ Ask any question about **how to use PyElastica and detail implementation** in th
 
 ### Formatting and styleguide
 
-We use [flake8](https://pypi.org/project/flake8/) and [Black](https://pypi.org/project/black/) for python style.
+We use [ruff](https://github.com/astral-sh/ruff) for formatting and linting.
 
-In order to format the code:
+To format the code:
 
-`make formatting`
+```bash
+ruff format .
+```
+
+To run lint checks:
+
+```bash
+ruff check .
+```
 
 > **Note:** Format/refactoring patches that are not anything substantial to the context or functionality will likely be rejected.
 

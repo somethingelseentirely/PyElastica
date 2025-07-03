@@ -13,7 +13,7 @@ In order to build the documentation, you will need additional
 packages listed in extra dependencies.
 
 ```bash
-poetry install -E docs
+uv pip install -e .[docs]
 cd docs
 make clean
 make html
