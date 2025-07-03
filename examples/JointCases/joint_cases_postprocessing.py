@@ -10,7 +10,6 @@ def plot_position(
     filename="spherical_joint_test.png",
     SAVE_FIGURE=False,
 ):
-
     position_of_rod1 = np.array(plot_params_rod1["position"])
     position_of_rod2 = np.array(plot_params_rod2["position"])
 

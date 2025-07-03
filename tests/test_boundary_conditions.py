@@ -121,7 +121,6 @@ def test_free_rod():
 
 
 def test_one_end_fixed_bc():
-
     test_rod = MockTestRod()
     start_position_collection = np.random.rand(3)
     start_director_collection = np.random.rand(3, 3)
@@ -312,9 +311,7 @@ def test_general_constraint(
     # test `nb_constrain_rotational_rates` for directors not equal to identity matrix
     # rotate angular velocities to inertial frame
     omega_collection_lab_frame = _batch_matvec(
-        test_director_collection[
-            ...,
-        ].transpose(1, 0, 2),
+        test_director_collection[...,].transpose(1, 0, 2),
         test_omega_collection,
     )
     # apply constraint selector to angular velocities in inertial frame
@@ -381,7 +378,6 @@ def test_general_constraint(
 
 
 def test_helical_buckling_bc():
-
     twisting_time = 500.0
     slack = 3.0
     number_of_rotations = 27.0  # number of 2pi rotations

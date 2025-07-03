@@ -52,9 +52,9 @@ def format_vector_shape(vector_collection):
         raise RuntimeError("Vector collection dimensions >2 are not supported")
 
         # Check for pure 3D cases for now
-    assert (
-        vector_collection.shape[0] == MaxDimension.value()
-    ), "Need first dimension = 3"
+    assert vector_collection.shape[0] == MaxDimension.value(), (
+        "Need first dimension = 3"
+    )
 
     return vector_collection
 
@@ -79,7 +79,7 @@ def format_matrix_shape(matrix_collection):
     # we need to convert the matrix in that case.
     def assert_proper_square(num1):
         sqrt_num = isqrt(num1)
-        assert sqrt_num ** 2 == num1, "Matrix dimension passed is not a perfect square"
+        assert sqrt_num**2 == num1, "Matrix dimension passed is not a perfect square"
         return sqrt_num
 
     if n_dim == 1:
@@ -119,9 +119,9 @@ def format_matrix_shape(matrix_collection):
             matrix_collection = matrix_collection.T
 
         # Given (dim, dim, bs) array, check if dimensions are equal
-        assert (
-            matrix_collection.shape[0] == matrix_collection.shape[1]
-        ), "Matrix shapes along 1 and 2 are not equal"
+        assert matrix_collection.shape[0] == matrix_collection.shape[1], (
+            "Matrix shapes along 1 and 2 are not equal"
+        )
 
         # Obtain dimensions for checking
         dim = matrix_collection.shape[0]
@@ -129,9 +129,9 @@ def format_matrix_shape(matrix_collection):
     elif n_dim > 3:
         raise RuntimeError("Matrix dimensions >3 are not supported")
 
-    assert (
-        dim == MaxDimension.value()
-    ), "Need matrix dimension = 3 for example (9,), (3,3), (3,3,1), (9,n), (3,3,n)"
+    assert dim == MaxDimension.value(), (
+        "Need matrix dimension = 3 for example (9,), (3,3), (3,3,1), (9,n), (3,3,n)"
+    )
 
     return matrix_collection
 

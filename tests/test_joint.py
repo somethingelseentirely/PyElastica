@@ -24,7 +24,6 @@ rng = np.random.default_rng(0)
 
 
 def test_freejoint():
-
     # Some rod properties. We need them for constructer, they are not used.
     normal = np.array([0.0, 1.0, 0.0])
     direction = np.array([0.0, 0.0, 1.0])
@@ -491,7 +490,6 @@ from elastica.joint import (
 
 
 def mock_rod_init(self):
-
     "Initializing Rod"
     "Details of initialization are given in test_contact_specific_functions.py"
 
@@ -508,7 +506,6 @@ def mock_rod_init(self):
 
 
 def mock_rigid_body_init(self):
-
     "Initializing Rigid Body"
     "Details of initialization are given in test_contact_specific_functions.py"
 
@@ -573,7 +570,6 @@ def test_prune_using_aabbs_rod_rod_error_message():
 
 
 def test_calculate_contact_forces_rod_rigid_body_error_message():
-
     "initializing rod parameters"
     rod = MockRod()
     rod_element_position = 0.5 * (
@@ -629,7 +625,6 @@ def test_calculate_contact_forces_rod_rigid_body_error_message():
 
 
 def test_calculate_contact_forces_rod_rod_error_message():
-
     rod_one = MockRod()
     rod_two = MockRod()
     """Placing rod two such that its first element just touches the last element of rod one."""
@@ -708,7 +703,6 @@ class TestExternalContact:
     def test_external_contact_rod_rigid_body_with_collision_with_k_without_nu_and_friction(
         self,
     ):
-
         "Testing External Contact wrapper with Collision with analytical verified values"
 
         mock_rod = MockRod()
@@ -734,7 +728,6 @@ class TestExternalContact:
     def test_external_contact_rod_rigid_body_with_collision_with_nu_without_k_and_friction(
         self,
     ):
-
         "Testing External Contact wrapper with Collision with analytical verified values"
 
         mock_rod = MockRod()
@@ -764,7 +757,6 @@ class TestExternalContact:
     def test_external_contact_rod_rigid_body_with_collision_with_k_and_nu_without_friction(
         self,
     ):
-
         "Testing External Contact wrapper with Collision with analytical verified values"
 
         mock_rod = MockRod()
@@ -794,7 +786,6 @@ class TestExternalContact:
     def test_external_contact_rod_rigid_body_with_collision_with_k_and_nu_and_friction(
         self,
     ):
-
         "Testing External Contact wrapper with Collision with analytical verified values"
 
         mock_rod = MockRod()
@@ -830,7 +821,6 @@ class TestExternalContact:
         )
 
     def test_external_contact_rod_rigid_body_without_collision(self):
-
         "Testing External Contact wrapper without Collision with analytical verified values"
 
         mock_rod = MockRod()
@@ -861,7 +851,6 @@ class TestExternalContact:
         )
 
     def test_external_contact_with_two_rods_with_collision_with_k_without_nu(self):
-
         "Testing External Contact wrapper with two rods with analytical verified values"
         "Test values have been copied from 'test_contact_specific_functions.py/test_calculate_contact_forces_rod_rod()'"
 
@@ -883,7 +872,6 @@ class TestExternalContact:
         )
 
     def test_external_contact_with_two_rods_with_collision_without_k_with_nu(self):
-
         "Testing External Contact wrapper with two rods with analytical verified values"
         "Test values have been copied from 'test_contact_specific_functions.py/test_calculate_contact_forces_rod_rod()'"
 
@@ -913,7 +901,6 @@ class TestExternalContact:
         )
 
     def test_external_contact_with_two_rods_with_collision_with_k_and_nu(self):
-
         "Testing External Contact wrapper with two rods with analytical verified values"
         "Test values have been copied from 'test_contact_specific_functions.py/test_calculate_contact_forces_rod_rod()'"
 
@@ -943,7 +930,6 @@ class TestExternalContact:
         )
 
     def test_external_contact_with_two_rods_without_collision(self):
-
         "Testing External Contact wrapper with two rods with analytical verified values"
 
         mock_rod_one = MockRod()
@@ -972,7 +958,6 @@ class TestExternalContact:
 
 class TestSelfContact:
     def test_self_contact_with_rod_self_collision(self):
-
         "Testing Self Contact wrapper rod self collision with analytical verified values"
 
         mock_rod = MockRod()
@@ -1008,7 +993,6 @@ class TestSelfContact:
         )
 
     def test_self_contact_with_rod_no_self_collision(self):
-
         "Testing Self Contact wrapper rod no self collision with analytical verified values"
 
         mock_rod = MockRod()

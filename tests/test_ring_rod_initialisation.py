@@ -92,7 +92,6 @@ class MockRingRodForTest:
         youngs_modulus,
         **kwargs,
     ):
-
         # Ring rod flag is true
         ring_rod_flag = True
         (
@@ -696,7 +695,7 @@ def test_constant_density(n_elems):
         density,
         youngs_modulus=youngs_modulus,
     )
-    correct_mass = density * np.pi * base_radius ** 2 * correct_length
+    correct_mass = density * np.pi * base_radius**2 * correct_length
     test_mass = mockrod.mass
 
     assert_allclose(correct_mass, test_mass, atol=Tolerance.atol())
@@ -746,7 +745,7 @@ def test_varying_density(n_elems):
     position_diff = correct_position[..., 1:] - correct_position[..., :-1]
     correct_length = np.linalg.norm(position_diff, axis=0)
 
-    volume = np.pi * base_radius ** 2 * correct_length
+    volume = np.pi * base_radius**2 * correct_length
     correct_mass = density * volume
     test_mass = mockrod.mass
 
@@ -951,7 +950,6 @@ def test_validity_of_allocated(n_elems):
 
 @pytest.mark.parametrize("n_elems", [80])
 def test_ring_rod(n_elems):
-
     # setting up test params
     center_offset = np.random.rand(3)
     direction = np.array([1.0, 0, 0.0])
@@ -987,7 +985,7 @@ def test_ring_rod(n_elems):
     position_diff = position_diff_temp[..., 1:] - position_diff_temp[..., :-1]
     correct_length = np.linalg.norm(position_diff, axis=0)
 
-    mass = density * np.pi * base_radius ** 2 * correct_length
+    mass = density * np.pi * base_radius**2 * correct_length
 
     # alpha c, constant for ring cross-sections
     # Second moment of inertia

@@ -14,16 +14,16 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath('../'))
+sys.path.insert(0, os.path.abspath("../"))
 
 from elastica.version import VERSION
 
 
 # -- Project information -----------------------------------------------------
 
-project = 'PyElastica'
-copyright = '2024, Gazzola Lab'
-author = 'Gazzola Lab'
+project = "PyElastica"
+copyright = "2024, Gazzola Lab"
+author = "Gazzola Lab"
 
 # The full version, including alpha/beta/rc tags
 release = VERSION
@@ -35,14 +35,14 @@ release = VERSION
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosectionlabel',
-    'sphinx_autodoc_typehints',
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosectionlabel",
+    "sphinx_autodoc_typehints",
     #'sphinx.ext.napoleon',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.mathjax',
-    'numpydoc',
-    'myst_parser',
+    "sphinx.ext.viewcode",
+    "sphinx.ext.mathjax",
+    "numpydoc",
+    "myst_parser",
 ]
 
 myst_enable_extensions = [
@@ -56,45 +56,49 @@ myst_enable_extensions = [
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = [
-        "README.md", # File reserved to explain how documentationing works.
-    ]
+    "README.md",  # File reserved to explain how documentationing works.
+]
 
-autodoc_default_flags = ['members',  'private-members', 'special-members',  'show-inheritance']
+autodoc_default_flags = [
+    "members",
+    "private-members",
+    "special-members",
+    "show-inheritance",
+]
 autosectionlabel_prefix_document = True
 
-source_parsers = {
-}
-source_suffix = ['.rst', '.md']
+source_parsers = {}
+source_suffix = [".rst", ".md"]
 
-master_doc = 'index'
+master_doc = "index"
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 
-html_theme = 'sphinx_book_theme'
+html_theme = "sphinx_book_theme"
 html_theme_options = {
     "repository_url": "https://github.com/GazzolaLab/PyElastica",
     "use_repository_button": True,
 }
 html_title = "PyElastica"
 html_logo = "_static/assets/Logo.png"
-#pygments_style = "sphinx"
+# pygments_style = "sphinx"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
-html_css_files = ['css/*', 'css/logo.css']
+html_static_path = ["_static"]
+html_css_files = ["css/*", "css/logo.css"]
 
 # -- Options for autodoc  ---------------------------------------------------
-autodoc_member_order = 'bysource'
+autodoc_member_order = "bysource"
 
 # -- Options for numpydoc ---------------------------------------------------
 numpydoc_show_class_members = False

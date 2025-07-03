@@ -19,10 +19,11 @@ class TestContact:
     ):
         with pytest.raises(AssertionError) as excinfo:
             load_contact.using(illegal_contact)
-        assert "{} is not a valid contact class. Did you forget to derive from NoContact?".format(
-            illegal_contact
-        ) == str(
-            excinfo.value
+        assert (
+            "{} is not a valid contact class. Did you forget to derive from NoContact?".format(
+                illegal_contact
+            )
+            == str(excinfo.value)
         )
 
     from elastica.contact_forces import NoContact, RodRodContact, RodSelfContact
@@ -49,10 +50,11 @@ class TestContact:
 
         with pytest.raises(RuntimeError) as excinfo:
             contact()
-        assert "No contacts provided to to establish contact between rod-like object id {0} and {1}, but a Contact was intended as per code. Did you forget to call the `using` method?".format(
-            *contact.id()
-        ) == str(
-            excinfo.value
+        assert (
+            "No contacts provided to to establish contact between rod-like object id {0} and {1}, but a Contact was intended as per code. Did you forget to call the `using` method?".format(
+                *contact.id()
+            )
+            == str(excinfo.value)
         )
 
     def test_call_improper_args_throws(self, load_contact):
@@ -250,9 +252,7 @@ class TestContactMixin:
         )  # index based contact
         system_collection_with_contacts.detect_contact_between(
             mock_rod_one, mock_rod_two
-        ).using(
-            MockContact
-        )  # system based contact
+        ).using(MockContact)  # system based contact
         system_collection_with_contacts.detect_contact_between(0, mock_rod_one).using(
             MockContact
         )  # index/system based contact
@@ -263,7 +263,7 @@ class TestContactMixin:
 
         system_collection_with_contacts._finalize_contact()
 
-        for (fidx, sidx, contact) in system_collection_with_contacts._contacts:
+        for fidx, sidx, contact in system_collection_with_contacts._contacts:
             assert type(fidx) is int
             assert type(sidx) is int
             assert type(contact) is contact_cls
@@ -288,9 +288,7 @@ class TestContactMixin:
         # incorrect order contact
         system_collection_with_contacts.detect_contact_between(
             mock_rigid_body, mock_rod
-        ).using(
-            MockContact
-        )  # rigid body before rod
+        ).using(MockContact)  # rigid body before rod
 
         return system_collection_with_contacts, MockContact
 
@@ -339,7 +337,6 @@ class TestContactMixin:
         return system_collection_with_rods_in_contact
 
     def test_contact_call_on_systems(self, load_system_with_rods_in_contact):
-
         system_collection_with_rods_in_contact = load_system_with_rods_in_contact
 
         system_collection_with_rods_in_contact._finalize_contact()

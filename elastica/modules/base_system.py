@@ -109,10 +109,10 @@ class BaseSystemCollection(MutableSequence):
 
         if isinstance(sys_to_be_added, (int, npint)):
             # 1. If they are indices themselves, check range
-            assert (
-                -n_systems <= sys_to_be_added < n_systems
-            ), "Rod index {} exceeds number of registered rodtems".format(
-                sys_to_be_added
+            assert -n_systems <= sys_to_be_added < n_systems, (
+                "Rod index {} exceeds number of registered rodtems".format(
+                    sys_to_be_added
+                )
             )
             sys_idx = sys_to_be_added
         elif self._check_type(sys_to_be_added):

@@ -39,18 +39,18 @@ def test_knot_theory_mixin_methods(knot_theory):
             self.radius = np.random.randn(MaxDimension.value(), self.n_elems)
 
     rod = TestRodWithKnotTheory()
-    assert hasattr(
-        rod, "MIXIN_PROTOCOL"
-    ), "Expected to mix-in variables: MIXIN_PROTOCOL"
-    assert hasattr(
-        rod, "compute_writhe"
-    ), "Expected to mix-in functionals into the rod class: compute_writhe"
-    assert hasattr(
-        rod, "compute_twist"
-    ), "Expected to mix-in functionals into the rod class: compute_twist"
-    assert hasattr(
-        rod, "compute_link"
-    ), "Expected to mix-in functionals into the rod class: compute_link"
+    assert hasattr(rod, "MIXIN_PROTOCOL"), (
+        "Expected to mix-in variables: MIXIN_PROTOCOL"
+    )
+    assert hasattr(rod, "compute_writhe"), (
+        "Expected to mix-in functionals into the rod class: compute_writhe"
+    )
+    assert hasattr(rod, "compute_twist"), (
+        "Expected to mix-in functionals into the rod class: compute_twist"
+    )
+    assert hasattr(rod, "compute_link"), (
+        "Expected to mix-in functionals into the rod class: compute_link"
+    )
 
 
 def test_knot_theory_mixin_methods_with_no_radius(knot_theory):
@@ -70,15 +70,25 @@ def test_knot_theory_mixin_methods_with_no_radius(knot_theory):
     # fmt: off
     [
         (
-            np.array([[0, 0, 0], [0, 0, 1], [0, 1, 1], [0, 1, 0], [1, 1, 0]], # position_collection
-                dtype=np.float64).T,
-            np.array([[1, 0, 0], [0, 1, 1], [1, 1, 0], [0,1,0]],              # director_collection
-                dtype=np.float64).T[None,...],
-            np.array([1, 2, 4, 2], dtype=np.float64),                         # radius
-            np.array([10.0]),                                                 # segment_length
-            0.75,                                                             # solution total twist
-            -0.477268070084,                                                  # solution total writhe
-            -0.703465518706
+            np.array(
+                [
+                    [0, 0, 0],
+                    [0, 0, 1],
+                    [0, 1, 1],
+                    [0, 1, 0],
+                    [1, 1, 0],
+                ],  # position_collection
+                dtype=np.float64,
+            ).T,
+            np.array(
+                [[1, 0, 0], [0, 1, 1], [1, 1, 0], [0, 1, 0]],  # director_collection
+                dtype=np.float64,
+            ).T[None, ...],
+            np.array([1, 2, 4, 2], dtype=np.float64),  # radius
+            np.array([10.0]),  # segment_length
+            0.75,  # solution total twist
+            -0.477268070084,  # solution total writhe
+            -0.703465518706,
         ),
     ],
     # solution total link

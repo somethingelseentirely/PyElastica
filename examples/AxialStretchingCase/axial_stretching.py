@@ -1,28 +1,29 @@
-""" Axial stretching test-case
+"""Axial stretching test-case
 
-    Assume we have a rod lying aligned in the x-direction, with high internal
-    damping.
+Assume we have a rod lying aligned in the x-direction, with high internal
+damping.
 
-    We fix one end (say, the left end) of the rod to a wall. On the right
-    end we apply a force directed axially pulling the rods tip. Linear
-    theory (assuming small displacements) predict that the net displacement
-    experienced by the rod tip is Δx = FL/AE where the symbols carry their
-    usual meaning (the rod is just a linear spring). We compare our results
-    with the above result.
+We fix one end (say, the left end) of the rod to a wall. On the right
+end we apply a force directed axially pulling the rods tip. Linear
+theory (assuming small displacements) predict that the net displacement
+experienced by the rod tip is Δx = FL/AE where the symbols carry their
+usual meaning (the rod is just a linear spring). We compare our results
+with the above result.
 
-    We can "improve" the theory by having a better estimate for the rod's
-    spring constant by assuming that it equilibriates under the new position,
-    with
-    Δx = F * (L + Δx)/ (A * E)
-    which results in Δx = (F*l)/(A*E - F). Our rod reaches equilibrium wrt to
-    this position.
+We can "improve" the theory by having a better estimate for the rod's
+spring constant by assuming that it equilibriates under the new position,
+with
+Δx = F * (L + Δx)/ (A * E)
+which results in Δx = (F*l)/(A*E - F). Our rod reaches equilibrium wrt to
+this position.
 
-    Note that if the damping is not high, the rod oscillates about the eventual
-    resting position (and this agrees with the theoretical predictions without
-    any damping : we should see the rod oscillating simple-harmonically in time).
+Note that if the damping is not high, the rod oscillates about the eventual
+resting position (and this agrees with the theoretical predictions without
+any damping : we should see the rod oscillating simple-harmonically in time).
 
-    isort:skip_file
+isort:skip_file
 """
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -50,7 +51,7 @@ direction = np.array([1.0, 0.0, 0.0])
 normal = np.array([0.0, 1.0, 0.0])
 base_length = 1.0
 base_radius = 0.025
-base_area = np.pi * base_radius ** 2
+base_area = np.pi * base_radius**2
 density = 1000
 youngs_modulus = 1e4
 # For shear modulus of 1e4, nu is 99!
@@ -90,6 +91,7 @@ stretch_sim.dampen(stretchable_rod).using(
     time_step=dt,
 )
 
+
 # Add call backs
 class AxialStretchingCallBack(ea.CallBackBaseClass):
     """
@@ -102,9 +104,7 @@ class AxialStretchingCallBack(ea.CallBackBaseClass):
         self.callback_params = callback_params
 
     def make_callback(self, system, time, current_step: int):
-
         if current_step % self.every == 0:
-
             self.callback_params["time"].append(time)
             # Collect only x
             self.callback_params["position"].append(

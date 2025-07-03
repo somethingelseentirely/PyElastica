@@ -29,7 +29,7 @@ binormal = np.cross(direction, normal)
 # catenary parameters
 base_length = 1.0
 base_radius = 0.01
-base_area = np.pi * (base_radius ** 2)
+base_area = np.pi * (base_radius**2)
 volume = base_area * base_length
 mass = 0.2
 density = mass / volume
@@ -81,9 +81,7 @@ class CatenaryCallBack(CallBackBaseClass):
         self.callback_params = callback_params
 
     def make_callback(self, system, time, current_step: int):
-
         if current_step % self.every == 0:
-
             self.callback_params["time"].append(time)
             self.callback_params["step"].append(current_step)
             self.callback_params["position"].append(system.position_collection.copy())

@@ -111,7 +111,6 @@ class MuscleForces(NoForces):
         tangents,
         external_forces,
     ):
-
         real_time = time - time_delay
         ramp = real_time if real_time <= 1.0 else 1.0
         factor = 0.0 if real_time <= 0.0 else ramp  # max(0.0, ramp)
@@ -125,9 +124,9 @@ class MuscleForces(NoForces):
             * tangents[..., muscle_start_end_index[0] : muscle_start_end_index[1]]
         )
 
-        forces[
-            ..., muscle_start_end_index[0] : muscle_start_end_index[1] + 1
-        ] += difference_kernel(muscle_forces)
+        forces[..., muscle_start_end_index[0] : muscle_start_end_index[1] + 1] += (
+            difference_kernel(muscle_forces)
+        )
 
         external_forces += forces
         return forces

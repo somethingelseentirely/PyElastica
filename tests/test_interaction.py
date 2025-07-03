@@ -378,7 +378,6 @@ class TestAnisotropicFriction:
         force_mag_long=0.0,  # forces along the rod
         force_mag_side=0.0,  # side forces on the rod
     ):
-
         rod = BaseRodClass(n_elem)
 
         origin_plane = np.array([0.0, -rod.radius[0], 0.0])
@@ -513,12 +512,12 @@ class TestAnisotropicFriction:
         correct_forces = np.zeros((3, n_elem + 1))
         if np.sign(force_mag) < 0:
             correct_forces[2] = (
-                external_forces_collection[2]
-            ) - 1.0 * external_forces_collection[1]
+                (external_forces_collection[2]) - 1.0 * external_forces_collection[1]
+            )
         else:
             correct_forces[2] = (
-                external_forces_collection[2]
-            ) + 1.0 * external_forces_collection[1]
+                (external_forces_collection[2]) + 1.0 * external_forces_collection[1]
+            )
 
         assert_allclose(correct_forces, rod.external_forces, atol=Tolerance.atol())
 

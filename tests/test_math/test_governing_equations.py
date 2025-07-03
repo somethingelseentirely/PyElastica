@@ -35,7 +35,6 @@ class BaseClass:
 
 
 def constructor(n_elem):
-
     cls = BaseClass(n_elem)
     rod = CosseratRod.straight_rod(
         cls.n_elem,
@@ -56,7 +55,6 @@ def constructor(n_elem):
 
 
 def compute_geometry_analytically(n_elem):
-
     initial = BaseClass(n_elem)
     # Construct position array using start and direction vectors.
     # This position array will be our reference for test cases
@@ -76,7 +74,6 @@ def compute_geometry_analytically(n_elem):
 
 
 def compute_all_dilatations_analytically(n_elem, dilatation):
-
     initial = BaseClass(n_elem)
     position, rest_lengths, tangents, radius = compute_geometry_analytically(n_elem)
 
@@ -96,7 +93,6 @@ def compute_all_dilatations_analytically(n_elem, dilatation):
 
 
 def compute_dilatation_rate_analytically(n_elem, dilatation):
-
     position, rest_lengths, tangents, radius = compute_geometry_analytically(n_elem)
     # In order to compute dilatation rate, we need to set node velocity.
     # We can compute velocity subtracting current position from the previous

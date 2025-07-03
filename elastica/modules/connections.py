@@ -152,12 +152,9 @@ class _Connect:
     def set_index(self, first_idx, second_idx):
         # TODO assert range
         # First check if the types of first rod idx and second rod idx variable are same.
-        assert type(first_idx) == type(
-            second_idx
-        ), "Type of first_connect_idx :{}".format(
-            type(first_idx)
-        ) + " is different than second_connect_idx :{}".format(
-            type(second_idx)
+        assert type(first_idx) == type(second_idx), (
+            "Type of first_connect_idx :{}".format(type(first_idx))
+            + " is different than second_connect_idx :{}".format(type(second_idx))
         )
 
         # Check if the type of idx variables are correct.
@@ -175,7 +172,6 @@ class _Connect:
             or isinstance(first_idx, list)
             or isinstance(first_idx, np.ndarray)
         ):
-
             for i in range(len(first_idx)):
                 assert isinstance(first_idx[i], (int, np.int_)), (
                     "Connection index of first rod is not integer :{}".format(
@@ -212,13 +208,12 @@ class _Connect:
             # Do nothing if idx are None
             pass
         else:
-
             # The addition of +1 and and <= check on the RHS is because
             # connections can be made to the node indices as well
-            assert (
-                -(self._first_sys_n_lim + 1) <= first_idx <= self._first_sys_n_lim
-            ), "Connection index of first rod exceeds its dof : {}".format(
-                self._first_sys_n_lim
+            assert -(self._first_sys_n_lim + 1) <= first_idx <= self._first_sys_n_lim, (
+                "Connection index of first rod exceeds its dof : {}".format(
+                    self._first_sys_n_lim
+                )
             )
             assert (
                 -(self._second_sys_n_lim + 1) <= second_idx <= self._second_sys_n_lim
@@ -247,10 +242,10 @@ class _Connect:
         -------
 
         """
-        assert issubclass(
-            connect_cls, FreeJoint
-        ), "{} is not a valid joint class. Did you forget to derive from FreeJoint?".format(
-            connect_cls
+        assert issubclass(connect_cls, FreeJoint), (
+            "{} is not a valid joint class. Did you forget to derive from FreeJoint?".format(
+                connect_cls
+            )
         )
         self._connect_cls = connect_cls
         self._args = args

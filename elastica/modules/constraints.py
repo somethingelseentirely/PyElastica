@@ -129,10 +129,10 @@ class _Constraint:
         -------
 
         """
-        assert issubclass(
-            bc_cls, ConstraintBase
-        ), "{} is not a valid constraint. Constraint must be driven from ConstraintBase.".format(
-            bc_cls
+        assert issubclass(bc_cls, ConstraintBase), (
+            "{} is not a valid constraint. Constraint must be driven from ConstraintBase.".format(
+                bc_cls
+            )
         )
         self._bc_cls = bc_cls
         self._args = args
