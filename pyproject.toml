@@ -41,7 +41,8 @@ numpy = ">=1.24,<1.29"
 scipy = "^1.12.0"
 tqdm = "^4.61.1"
 matplotlib = "^3.8"
-pyvista = "^0.39.1"
+pyvista = "^0.45.2"
+vtk = "==9.3.0"
 # A list of all of the optional dependencies, some of which are included in the
 # below `extras`. They can be opted into by apps.
 Sphinx = {version = "^6.1", optional = true}
