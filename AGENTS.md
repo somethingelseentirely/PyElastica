@@ -13,13 +13,12 @@ PyElastica focuses on a few guiding principles:
 
 ## Repository Guidelines
 
-* Run `make formatting` on any Python files you modify.
-* Run `make test` and ensure it passes before committing. If tests fail or cannot run, note that in your PR.
-* For quick iterations, run `./scripts/devtest.sh` to execute only the tests.
+* Run `ruff format .` on any Python files you modify.
+* Use `./scripts/devtest.sh` to run tests during development.
 * Before committing, execute `./scripts/preflight.sh` from the repository root.
-  This script runs formatting checks and tests. Ensure `poetry` and the development
-  dependencies are installed. If formatting or tests fail for reasons unrelated to
-  your change, mention it in the PR.
+  This script installs any missing tools or dependencies with `uv`, formats the
+  modified files, and runs the test suite. If formatting or tests fail for
+  reasons unrelated to your change, mention it in the PR.
 * Avoid committing files listed in `.gitignore` such as build artifacts or caches.
 * Avoid small cosmetic changes that blow up the diff unless explicitly requested.
 * Use clear commit messages describing the change.

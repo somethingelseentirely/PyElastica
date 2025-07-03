@@ -7,10 +7,9 @@ build:
   tools: {python: "3.10"}
   jobs:
     post_create_environment:
-      - pip install poetry
-      - poetry config virtualenvs.create false
+      - pip install uv
     post_install:
-      - VIRTUAL_ENV=$READTHEDOCS_VIRTUALENV_PATH poetry install --all-extras
+      - uv pip install -e .[docs]
 
 # Build documentation in the docs/ directory with Sphinx
 sphinx:

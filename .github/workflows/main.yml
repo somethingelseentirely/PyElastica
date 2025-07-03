@@ -41,31 +41,21 @@ jobs:
       # You can test your matrix by printing the current Python version
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
-      # Install Poetry and dependencies
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-      - name: Set up cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ matrix.path }}
-          key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('poetry.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
       - name: Install dependencies
         run: |
-          poetry config virtualenvs.in-project true
-          poetry install
+          uv pip install ruff pytest
+          uv pip install -e .
       # Runs a single command using the runners shell
       - name: Welcome message
         run: echo Hello, world! Welcome PyElastica Build, lets start testing!
-      # Run style checks (black and flake8)
-      - name: Run style checks
+      - name: Run formatting
         run: |
-          make check-codestyle
-      # Test PyElastica using pytest
+          ruff format .
       - name: Run tests
         run: |
-          make test
+          pytest
   report-coverage:  # Report coverage from python 3.10 and mac-os. May change later
     runs-on: ${{ matrix.os }}
     strategy:
@@ -81,26 +71,19 @@ jobs:
         uses: actions/setup-python@v4.2.0
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-      - name: Set up cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ matrix.path }}
-          key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('poetry.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
       - name: Install dependencies
         run: |
-          poetry config virtualenvs.in-project true
-          poetry install
-      - name: Run style checks
+          uv pip install ruff pytest
+          uv pip install -e .
+      - name: Run formatting
         run: |
-          make check-codestyle
+          ruff format .
       - name: Test PyElastica using pytest
         if: startsWith(runner.os, 'macOS')
         run: |
-          make test_coverage_xml
+          pytest --cov=elastica --cov-report=xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:

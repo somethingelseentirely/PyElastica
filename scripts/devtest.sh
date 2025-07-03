@@ -5,4 +5,4 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 # Run only the tests for quick iteration
-make test
+pytest

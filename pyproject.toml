@@ -54,7 +54,7 @@ docutils = {version = "^0.18", optional = true}
 cma = {version = "^3.2.2", optional = true}
 
 [tool.poetry.dev-dependencies]
-black = "21.12b0"
+ruff = "^0.4.0"
 pytest = "^7.1.1"
 coverage = "^6.3.3"
 pre-commit = "^2.19.0"
@@ -79,26 +79,23 @@ examples = [
   "cma",
 ]
 
-[tool.black]
-# https://github.com/psf/black
-target-version = ["py38"]
+
+[tool.ruff]
 line-length = 88
-color = true
-exclude = '''
-/(
-    \.git
-    | \.hg
-    | \.mypy_cache
-    | \.tox
-    | \.venv
-    | _build
-    | buck-out
-    | build
-    | dist
-    | env
-    | venv
-)/
-'''
+target-version = "py38"
+exclude = [
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".tox",
+    ".venv",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "env",
+    "venv",
+]
 
 [tool.pytest.ini_options]
 # https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
