@@ -19,7 +19,7 @@ Visit [www.cosseratrods.org][link-project-website] for more information and lear
 ## How to Start
 [![PyPI version][badge-pypi]][link-pypi] [![Documentation Status][badge-docs-status]][link-docs-status]
 
-PyElastica is compatible with Python 3.10 - 3.12.
+PyElastica is compatible with Python 3.11 - 3.12.
 
 ~~~bash
 $ pip install pyelastica
