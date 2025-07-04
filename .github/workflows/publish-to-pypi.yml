@@ -15,7 +15,7 @@ jobs:
           python-version: "3.x"
       - uses: astral-sh/setup-uv@v5
       - name: Install build tools
-        run: uv pip install build
+        run: uv pip install build --system
       - name: Build
         run: python -m build
       - name: Publish distribution 📦 to PyPI
