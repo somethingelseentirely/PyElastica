@@ -45,8 +45,8 @@ jobs:
         uses: astral-sh/setup-uv@v5
       - name: Install dependencies
         run: |
-          uv pip install ruff pytest
-          uv pip install -e .
+          uv pip install ruff pytest --system
+          uv pip install -e . --system
       # Runs a single command using the runners shell
       - name: Welcome message
         run: echo Hello, world! Welcome PyElastica Build, lets start testing!
@@ -75,8 +75,8 @@ jobs:
         uses: astral-sh/setup-uv@v5
       - name: Install dependencies
         run: |
-          uv pip install ruff pytest
-          uv pip install -e .
+          uv pip install ruff pytest --system
+          uv pip install -e . --system
       - name: Run formatting
         run: |
           ruff format .
