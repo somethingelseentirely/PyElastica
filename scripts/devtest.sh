@@ -10,8 +10,21 @@ if ! command -v uv >/dev/null 2>&1; then
   pip install uv
 fi
 
-# Install project dependencies to avoid ModuleNotFound errors during tests
-uv pip install -e . --system
+# Ensure a virtual environment exists for maturin
+if [ ! -d ".venv" ]; then
+  python -m venv .venv
+fi
+source .venv/bin/activate
+
+# Install project dependencies and build tools
+uv pip install -e . maturin
+
+# Ensure the venv site-packages is first in PYTHONPATH
+export PYTHONPATH="$(python -c 'import site; print(site.getsitepackages()[0])')${PYTHONPATH:+:$PYTHONPATH}"
+
+# Build the Rust extension so tests can import it
+cargo test --manifest-path elastica_rust/Cargo.toml
+python -m maturin develop -m elastica_rust/Cargo.toml --release
 
 # Run only the tests for quick iteration
 pytest "$@"
