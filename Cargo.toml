@@ -1,0 +1,3 @@
+[workspace]
+members = ["elastica_rust"]
+resolver = "2"

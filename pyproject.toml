@@ -1,6 +1,6 @@
 # Poetry pyproject.toml: https://python-poetry.org/docs/pyproject/
 [build-system]
-requires = ["poetry_core>=1.0.0"]
+requires = ["poetry_core>=1.0.0", "maturin>=1.9"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
@@ -64,6 +64,7 @@ flake8 = "^3.8"
 codecov = "2.1.13"
 click = "8.0.0"
 autoflake8 = "^0.4"
+maturin = "^1.9"
 
 [tool.poetry.extras]
 docs = [
@@ -101,3 +102,7 @@ exclude = [
 # https://docs.pytest.org/en/6.2.x/customize.html#pyproject-toml
 # Directories that are not visited by pytest collector:
 norecursedirs =["hooks", "*.egg", ".eggs", "dist", "build", "docs", ".tox", ".git", "__pycache__"]
+
+[tool.maturin]
+manifest-path = "elastica_rust/Cargo.toml"
+bindings = "pyo3"
