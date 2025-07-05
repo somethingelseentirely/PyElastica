@@ -21,7 +21,7 @@ uv pip install ruff pytest maturin -e .
 
 # Run Rust tests and build Python extension
 cargo test --manifest-path elastica_rust/Cargo.toml
-maturin develop -m elastica_rust/Cargo.toml --release --skip-install
+maturin develop -m elastica_rust/Cargo.toml --release
 
 # Run formatting on modified Python files and tests
 files=$(git status --porcelain | awk '/\.py$/ {print $2}')
