@@ -10,19 +10,18 @@ if ! command -v uv >/dev/null 2>&1; then
   pip install uv
 fi
 
-# Install required tools and project dependencies if missing
-missing_pkgs=()
-for pkg in ruff pytest; do
-  if ! command -v "$pkg" >/dev/null 2>&1; then
-    missing_pkgs+=("$pkg")
-  fi
-done
-if [ ${#missing_pkgs[@]} -gt 0 ]; then
-  uv pip install --system "${missing_pkgs[@]}"
+# Ensure a virtual environment exists for maturin
+if [ ! -d ".venv" ]; then
+  python -m venv .venv
 fi
+source .venv/bin/activate
 
-# Ensure project dependencies are installed from pyproject
-uv pip install -e . --system
+# Install tools and project dependencies
+uv pip install ruff pytest maturin -e .
+
+# Run Rust tests and build Python extension
+cargo test --manifest-path elastica_rust/Cargo.toml
+maturin develop -m elastica_rust/Cargo.toml --release --skip-install
 
 # Run formatting on modified Python files and tests
 files=$(git status --porcelain | awk '/\.py$/ {print $2}')

@@ -33,6 +33,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
       # Ref: https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-python
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4.2.0
@@ -47,6 +52,11 @@ jobs:
         run: |
           uv pip install ruff pytest --system
           uv pip install -e . --system
+          uv pip install maturin --system
+      - name: Build Rust extension
+        run: |
+          cargo test --manifest-path elastica_rust/Cargo.toml
+          maturin develop -m elastica_rust/Cargo.toml --release
       # Runs a single command using the runners shell
       - name: Welcome message
         run: echo Hello, world! Welcome PyElastica Build, lets start testing!
@@ -67,6 +77,11 @@ jobs:
             path: ~/Library/Caches/pip
     steps:
       - uses: actions/checkout@v2
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4.2.0
         with:
@@ -77,6 +92,11 @@ jobs:
         run: |
           uv pip install ruff pytest --system
           uv pip install -e . --system
+          uv pip install maturin --system
+      - name: Build Rust extension
+        run: |
+          cargo test --manifest-path elastica_rust/Cargo.toml
+          maturin develop -m elastica_rust/Cargo.toml --release
       - name: Run formatting
         run: |
           ruff format .
