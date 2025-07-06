@@ -24,6 +24,8 @@ export PYTHONPATH="$(python -c 'import site; print(site.getsitepackages()[0])')$
 
 # Build the Rust extension so tests can import it
 cargo test --manifest-path elastica_rust/Cargo.toml
+# Build the release library for integration with Python
+cargo build --release --manifest-path elastica_rust/Cargo.toml
 python -m maturin develop -m elastica_rust/Cargo.toml --release
 
 # Run only the tests for quick iteration
