@@ -1,14 +1,12 @@
 __doc__ = """ Helper functions for contact force calculation """
 
 from math import sqrt
-import numba
 import numpy as np
 from elastica._linalg import (
     _batch_norm,
 )
 
 
-@numba.njit(cache=True)
 def _dot_product(a, b):
     sum = 0.0
     for i in range(3):
@@ -16,23 +14,19 @@ def _dot_product(a, b):
     return sum
 
 
-@numba.njit(cache=True)
 def _norm(a):
     return sqrt(_dot_product(a, a))
 
 
-@numba.njit(cache=True)
 def _clip(x, low, high):
     return max(low, min(x, high))
 
 
 # Can this be made more efficient than 2 comp, 1 or?
-@numba.njit(cache=True)
 def _out_of_bounds(x, low, high):
     return (x < low) or (x > high)
 
 
-@numba.njit(cache=True)
 def _find_min_dist(x1, e1, x2, e2):
     e1e1 = _dot_product(e1, e1)
     e1e2 = _dot_product(e1, e2)
@@ -98,7 +92,6 @@ def _find_min_dist(x1, e1, x2, e2):
     return x2 + s * e2 - x1 - t * e1, x2 + s * e2, x1 - t * e1
 
 
-@numba.njit(cache=True)
 def _aabbs_not_intersecting(aabb_one, aabb_two):
     """Returns true if not intersecting else false"""
     if (aabb_one[0, 1] < aabb_two[0, 0]) | (aabb_one[0, 0] > aabb_two[0, 1]):
@@ -111,7 +104,6 @@ def _aabbs_not_intersecting(aabb_one, aabb_two):
     return 0
 
 
-@numba.njit(cache=True)
 def _prune_using_aabbs_rod_cylinder(
     rod_one_position_collection,
     rod_one_radius_collection,
@@ -153,7 +145,6 @@ def _prune_using_aabbs_rod_cylinder(
     return _aabbs_not_intersecting(aabb_cylinder, aabb_rod)
 
 
-@numba.njit(cache=True)
 def _prune_using_aabbs_rod_rod(
     rod_one_position_collection,
     rod_one_radius_collection,
@@ -191,7 +182,6 @@ def _prune_using_aabbs_rod_rod(
     return _aabbs_not_intersecting(aabb_rod_two, aabb_rod_one)
 
 
-@numba.njit(cache=True)
 def _prune_using_aabbs_rod_sphere(
     rod_one_position_collection,
     rod_one_radius_collection,
@@ -230,7 +220,6 @@ def _prune_using_aabbs_rod_sphere(
     return _aabbs_not_intersecting(aabb_sphere, aabb_rod)
 
 
-@numba.njit(cache=True)
 def _find_slipping_elements(velocity_slip, velocity_threshold):
     """
     This function takes the velocity of elements and checks if they are larger than the threshold velocity.
@@ -271,7 +260,6 @@ def _find_slipping_elements(velocity_slip, velocity_threshold):
     return slip_function
 
 
-@numba.njit(cache=True)
 def _node_to_element_mass_or_force(input):
     """
     This function converts the mass/forces on rod nodes to
@@ -309,7 +297,6 @@ def _node_to_element_mass_or_force(input):
     return output
 
 
-@numba.njit(cache=True)
 def _elements_to_nodes_inplace(vector_in_element_frame, vector_in_node_frame):
     """
     Updating nodal forces using the forces computed on elements
@@ -332,7 +319,6 @@ def _elements_to_nodes_inplace(vector_in_element_frame, vector_in_node_frame):
             vector_in_node_frame[i, k + 1] += 0.5 * vector_in_element_frame[i, k]
 
 
-@numba.njit(cache=True)
 def _node_to_element_position(node_position_collection):
     """
     This function computes the position of the elements
@@ -378,7 +364,6 @@ def _node_to_element_position(node_position_collection):
     return element_position_collection
 
 
-@numba.njit(cache=True)
 def _node_to_element_velocity(mass, node_velocity_collection):
     """
     This function computes the velocity of the elements

@@ -21,14 +21,12 @@ from elastica.contact_utils import (
     _elements_to_nodes_inplace,
     _node_to_element_mass_or_force,
 )
-from numba import njit
 from elastica.rod import RodBase
 from elastica.surface import Plane
 from elastica.contact_forces import NoContact
 from elastica.typing import RodType, SystemType, AllowedContactType
 
 
-@njit(cache=True)
 def apply_normal_force_numba(
     plane_origin,
     plane_normal,
@@ -113,7 +111,6 @@ def apply_normal_force_numba(
     return (_batch_norm(plane_response_force), no_contact_point_idx)
 
 
-@njit(cache=True)
 def anisotropic_friction(
     plane_origin,
     plane_normal,

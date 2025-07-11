@@ -9,12 +9,10 @@ from numpy import cos
 from numpy import sqrt
 from numpy import arccos
 
-from numba import njit
 
 from elastica._linalg import _batch_matmul
 
 
-@njit(cache=True)
 def _get_rotation_matrix(scale: float, axis_collection):
     blocksize = axis_collection.shape[1]
     rot_mat = np.empty((3, 3, blocksize))
@@ -48,7 +46,6 @@ def _get_rotation_matrix(scale: float, axis_collection):
     return rot_mat
 
 
-@njit(cache=True)
 def _rotate(director_collection, scale: float, axis_collection):
     """
     Does alibi rotations
@@ -73,7 +70,6 @@ def _rotate(director_collection, scale: float, axis_collection):
     )
 
 
-@njit(cache=True)
 def _inv_rotate(director_collection):
     """
     Calculated rate of change using Rodrigues' formula

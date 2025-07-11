@@ -2,7 +2,6 @@ __doc__ = """Muscular flagella, muscle forces class Numba implementation."""
 import numpy as np
 from elastica.external_forces import NoForces
 from elastica._calculus import difference_kernel
-from numba import njit
 
 
 class MuscleForces(NoForces):
@@ -44,7 +43,6 @@ class MuscleForces(NoForces):
         )
 
     @staticmethod
-    @njit(cache=True)
     def _apply_forces(amplitude, wt, tangents, external_forces):
         muscle_force = tangents * amplitude * np.abs(np.sin(wt))
         external_forces += difference_kernel(muscle_force)

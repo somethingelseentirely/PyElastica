@@ -8,7 +8,6 @@ from abc import ABC, abstractmethod
 
 from elastica.typing import RodType, SystemType
 
-from numba import njit
 
 import numpy as np
 
@@ -242,7 +241,6 @@ class LaplaceDissipationFilter(DamperBase):
         )
 
 
-@njit(cache=True)
 def _filter_function_periodic_condition_ring_rod(
     velocity_collection,
     velocity_filter_term,
@@ -280,7 +278,6 @@ def _filter_function_periodic_condition_ring_rod(
     omega_collection[:] = omega_collection_with_periodic_bc[:, 1:-1]
 
 
-@njit(cache=True)
 def _filter_function_periodic_condition(
     velocity_collection,
     velocity_filter_term,
@@ -300,7 +297,6 @@ def _filter_function_periodic_condition(
     )
 
 
-@njit(cache=True)
 def nb_filter_rate(
     rate_collection: np.ndarray, filter_term: np.ndarray, filter_order: int
 ) -> None:

@@ -22,11 +22,9 @@ from elastica._linalg import (
     _batch_matrix_transpose,
     _batch_vec_oneD_vec_cross,
 )
-import numba
 import numpy as np
 
 
-@numba.njit(cache=True)
 def _calculate_contact_forces_rod_cylinder(
     x_collection_rod,
     edge_collection_rod,
@@ -153,7 +151,6 @@ def _calculate_contact_forces_rod_cylinder(
     )
 
 
-@numba.njit(cache=True)
 def _calculate_contact_forces_rod_rod(
     x_collection_rod_one,
     radius_rod_one,
@@ -270,7 +267,6 @@ def _calculate_contact_forces_rod_rod(
                 external_forces_rod_two[..., j + 1] += net_contact_force
 
 
-@numba.njit(cache=True)
 def _calculate_contact_forces_self_rod(
     x_collection_rod,
     radius_rod,
@@ -358,7 +354,6 @@ def _calculate_contact_forces_self_rod(
                 external_forces_rod[..., j + 1] += net_contact_force
 
 
-@numba.njit(cache=True)
 def _calculate_contact_forces_rod_sphere(
     x_collection_rod,
     edge_collection_rod,
@@ -484,7 +479,6 @@ def _calculate_contact_forces_rod_sphere(
     )
 
 
-@numba.njit(cache=True)
 def _calculate_contact_forces_rod_plane(
     plane_origin,
     plane_normal,
@@ -569,7 +563,6 @@ def _calculate_contact_forces_rod_plane(
     return (_batch_norm(plane_response_force), no_contact_point_idx)
 
 
-@numba.njit(cache=True)
 def _calculate_contact_forces_rod_plane_with_anisotropic_friction(
     plane_origin,
     plane_normal,
@@ -782,7 +775,6 @@ def _calculate_contact_forces_rod_plane_with_anisotropic_friction(
     )
 
 
-@numba.njit(cache=True)
 def _calculate_contact_forces_cylinder_plane(
     plane_origin,
     plane_normal,

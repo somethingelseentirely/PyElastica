@@ -1,6 +1,5 @@
 __doc__ = """ Convenient linear algebra kernels """
 import numpy as np
-from numba import njit
 from numpy import sqrt
 import functools
 from itertools import permutations
@@ -27,7 +26,6 @@ def levi_civita_tensor(dim):
     return epsilon
 
 
-@njit(cache=True)
 def _batch_matvec(matrix_collection, vector_collection):
     """
     This function does batch matrix and batch vector product
@@ -58,7 +56,6 @@ def _batch_matvec(matrix_collection, vector_collection):
     return output_vector
 
 
-@njit(cache=True)
 def _batch_matmul(first_matrix_collection, second_matrix_collection):
     """
     This is batch matrix matrix multiplication function. Only batch
@@ -92,7 +89,6 @@ def _batch_matmul(first_matrix_collection, second_matrix_collection):
     return output_matrix
 
 
-@njit(cache=True)
 def _batch_cross(first_vector_collection, second_vector_collection):
     """
     This function does cross product between two batch vectors.
@@ -132,7 +128,6 @@ def _batch_cross(first_vector_collection, second_vector_collection):
     return output_vector
 
 
-@njit(cache=True)
 def _batch_vec_oneD_vec_cross(first_vector_collection, second_vector):
     """
     This function does cross product between batch vector and a 1D vector.
@@ -176,7 +171,6 @@ def _batch_vec_oneD_vec_cross(first_vector_collection, second_vector):
     return output_vector
 
 
-@njit(cache=True)
 def _batch_dot(first_vector, second_vector):
     """
     This function does batch vec and batch vec dot product.
@@ -203,7 +197,6 @@ def _batch_dot(first_vector, second_vector):
     return output_vector
 
 
-@njit(cache=True)
 def _batch_norm(vector):
     """
     This function computes norm of a batch vector
@@ -232,7 +225,6 @@ def _batch_norm(vector):
     return output_vector
 
 
-@njit(cache=True)
 def _batch_product_i_k_to_ik(vector1, vector2):
     """
     This function does outer product following 'i,k->ik'.
@@ -261,7 +253,6 @@ def _batch_product_i_k_to_ik(vector1, vector2):
     return output_vector
 
 
-@njit(cache=True)
 def _batch_product_i_ik_to_k(vector1, vector2):
     """
     This function does the following product 'i,ik->k'
@@ -292,7 +283,6 @@ def _batch_product_i_ik_to_k(vector1, vector2):
     return output_vector
 
 
-@njit(cache=True)
 def _batch_product_k_ik_to_ik(vector1, vector2):
     """
     This function does the following product 'k, ik->ik'
@@ -321,7 +311,6 @@ def _batch_product_k_ik_to_ik(vector1, vector2):
     return output_vector
 
 
-@njit(cache=True)
 def _batch_vector_sum(vector1, vector2):
     """
     This function is for summing up two vectors. Although
@@ -351,7 +340,6 @@ def _batch_vector_sum(vector1, vector2):
     return output_vector
 
 
-@njit(cache=True)
 def _batch_matrix_transpose(input_matrix):
     """
     This function takes an batch input matrix and transpose it.

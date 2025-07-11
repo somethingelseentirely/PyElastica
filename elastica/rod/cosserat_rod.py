@@ -3,7 +3,6 @@ __doc__ = """ Rod classes and implementation details """
 
 import numpy as np
 import functools
-import numba
 from elastica.rod import RodBase
 from elastica._linalg import (
     _batch_cross,
@@ -690,7 +689,6 @@ class CosseratRod(RodBase, KnotTheory):
 # Below is the numba-implementation of Cosserat Rod equations. They don't need to be visible by users.
 
 
-@numba.njit(cache=True)
 def _compute_geometry_from_state(
     position_collection, volume, lengths, tangents, radius
 ):
@@ -714,7 +712,6 @@ def _compute_geometry_from_state(
         radius[k] = np.sqrt(volume[k] / lengths[k] / np.pi)
 
 
-@numba.njit(cache=True)
 def _compute_all_dilatations(
     position_collection,
     volume,
@@ -744,7 +741,6 @@ def _compute_all_dilatations(
         voronoi_dilatation[k] = voronoi_lengths[k] / rest_voronoi_lengths[k]
 
 
-@numba.njit(cache=True)
 def _compute_dilatation_rate(
     position_collection, velocity_collection, lengths, rest_lengths, dilatation_rate
 ):
@@ -771,7 +767,6 @@ def _compute_dilatation_rate(
         )
 
 
-@numba.njit(cache=True)
 def _compute_shear_stretch_strains(
     position_collection,
     volume,
@@ -806,7 +801,6 @@ def _compute_shear_stretch_strains(
     sigma[:] = dilatation * _batch_matvec(director_collection, tangents) - z_vector
 
 
-@numba.njit(cache=True)
 def _compute_internal_shear_stretch_stresses_from_model(
     position_collection,
     volume,
@@ -846,7 +840,6 @@ def _compute_internal_shear_stretch_stresses_from_model(
     internal_stress[:] = _batch_matvec(shear_matrix, sigma - rest_sigma)
 
 
-@numba.njit(cache=True)
 def _compute_bending_twist_strains(director_collection, rest_voronoi_lengths, kappa):
     """
     Update <curvature/twist (kappa)> given <director and rest_voronoi_length>.
@@ -859,7 +852,6 @@ def _compute_bending_twist_strains(director_collection, rest_voronoi_lengths, ka
         kappa[2, k] = temp[2, k] / rest_voronoi_lengths[k]
 
 
-@numba.njit(cache=True)
 def _compute_internal_bending_twist_stresses_from_model(
     director_collection,
     rest_voronoi_lengths,
@@ -888,7 +880,6 @@ def _compute_internal_bending_twist_stresses_from_model(
     internal_couple[:] = _batch_matvec(bend_matrix, temp)
 
 
-@numba.njit(cache=True)
 def _compute_internal_forces(
     position_collection,
     volume,
@@ -949,7 +940,6 @@ def _compute_internal_forces(
     )
 
 
-@numba.njit(cache=True)
 def _compute_internal_torques(
     position_collection,
     velocity_collection,
@@ -1038,7 +1028,6 @@ def _compute_internal_torques(
             )
 
 
-@numba.njit(cache=True)
 def _update_accelerations(
     acceleration_collection,
     internal_forces,
@@ -1073,7 +1062,6 @@ def _update_accelerations(
                 ) * dilatation[k]
 
 
-@numba.njit(cache=True)
 def _zeroed_out_external_forces_and_torques(external_forces, external_torques):
     """
     This function is to zeroed out external forces and torques.

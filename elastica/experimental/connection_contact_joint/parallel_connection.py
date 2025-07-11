@@ -1,6 +1,5 @@
 __doc__ = """Contains SurfaceJointSideBySide class which connects two parallel rods ."""
 import numpy as np
-from numba import njit
 from elastica.joint import FreeJoint
 
 # Join the two rods
@@ -125,7 +124,6 @@ class SurfaceJointSideBySide(FreeJoint):
         )
 
     @staticmethod
-    @njit(cache=True)
     def _apply_forces(
         k,
         nu,
@@ -261,7 +259,6 @@ class SurfaceJointSideBySide(FreeJoint):
         )
 
     @staticmethod
-    @njit(cache=True)
     def _apply_torques(
         spring_force,
         rod_one_rd2,
