@@ -1,7 +1,6 @@
 __doc__ = """Muscular flagella connection class Numba implementation. """
 __all__ = ["MuscularFlagellaConnection"]
 import numpy as np
-from numba import njit
 from elastica.joint import FreeJoint
 from elastica._linalg import _batch_matvec
 
@@ -44,7 +43,6 @@ class MuscularFlagellaConnection(FreeJoint):
         )
 
     @staticmethod
-    @njit(cache=True)
     def _apply_forces(
         k,
         normal,
@@ -106,7 +104,6 @@ class MuscularFlagellaConnection(FreeJoint):
         )
 
     @staticmethod
-    @njit(cache=True)
     def _apply_torques(
         index_one, torque, rod_one_director_collection, rod_one_external_torques
     ):

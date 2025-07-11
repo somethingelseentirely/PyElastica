@@ -3,7 +3,6 @@ __doc__ = """ External forces and Actions (in learning) of the snake terrain cas
 import numpy as np
 from elastica._linalg import _batch_matvec
 from elastica.utils import _bspline
-from numba import njit
 from elastica._linalg import (
     _batch_norm,
     _batch_product_k_ik_to_ik,
@@ -122,7 +121,6 @@ class MuscleTorquesLifting(NoForces):
         )
 
     @staticmethod
-    @njit(cache=True)
     def compute_muscle_torques(
         time,
         spline,

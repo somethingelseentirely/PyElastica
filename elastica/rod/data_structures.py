@@ -1,7 +1,6 @@
 __doc__ = "Data structure wrapper for rod components"
 
 import numpy as np
-from numba import njit
 from elastica._rotations import _get_rotation_matrix, _rotate
 from elastica._linalg import _batch_matmul
 
@@ -403,7 +402,6 @@ class _KinematicState:
         self.director_collection = director_collection_view
 
 
-@njit(cache=True)
 def overload_operator_kinematic_numba(
     n_nodes,
     prefac,
@@ -502,7 +500,6 @@ class _DynamicState:
         return prefac * self.dvdt_dwdt_collection
 
 
-@njit(cache=True)
 def overload_operator_dynamic_numba(rate_collection, scaled_second_deriv_array):
     """overloaded += operator, updating dynamic_rates
     Parameters

@@ -1,7 +1,6 @@
 __doc__ = """ Quadrature and difference kernels """
 import numpy as np
 from numpy import zeros, empty
-from numba import njit
 from elastica.reset_functions_for_block_structure._reset_ghost_vector_or_scalar import (
     _reset_vector_ghost,
 )
@@ -16,7 +15,6 @@ def _get_zero_array(dim, ndim):
         return np.zeros((dim, 1))
 
 
-@njit(cache=True)
 def _trapezoidal(array_collection):
     """
     Simple trapezoidal quadrature rule with zero at end-points, in a dimension agnostic way
@@ -62,7 +60,6 @@ def _trapezoidal(array_collection):
     return temp_collection
 
 
-@njit(cache=True)
 def _trapezoidal_for_block_structure(array_collection, ghost_idx):
     """
     Simple trapezoidal quadrature rule with zero at end-points, in a dimension agnostic way. This form
@@ -114,7 +111,6 @@ def _trapezoidal_for_block_structure(array_collection, ghost_idx):
     return temp_collection
 
 
-@njit(cache=True)
 def _two_point_difference(array_collection):
     """
     This function does differentiation.
@@ -155,7 +151,6 @@ def _two_point_difference(array_collection):
     return temp_collection
 
 
-@njit(cache=True)
 def _two_point_difference_for_block_structure(array_collection, ghost_idx):
     """
     This function does the differentiation, for Cosserat rod model equations. This form
@@ -206,7 +201,6 @@ def _two_point_difference_for_block_structure(array_collection, ghost_idx):
     return temp_collection
 
 
-@njit(cache=True)
 def _difference(vector):
     """
     This function computes difference between elements of a batch vector.
@@ -237,7 +231,6 @@ def _difference(vector):
     return output_vector
 
 
-@njit(cache=True)
 def _average(vector):
     """
     This function computes the average between elements of a vector.
@@ -267,7 +260,6 @@ def _average(vector):
     return output_vector
 
 
-@njit(cache=True)
 def _clip_array(input_array, vmin, vmax):
     """
     This function clips an array values
@@ -303,7 +295,6 @@ def _clip_array(input_array, vmin, vmax):
     return input_array
 
 
-@njit(cache=True)
 def _isnan_check(array):
     """
     This function checks if there is any nan inside the array.

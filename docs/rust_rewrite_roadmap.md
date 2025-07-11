@@ -8,7 +8,6 @@ This roadmap proposes migrating performance‐critical portions of PyElastica to
 ```
 The core of PyElastica is developed using:
 - numpy
-- numba
 - scipy
 - tqdm
 - matplotlib (visualization)
@@ -26,7 +25,6 @@ While the original C++ re-release appears inactive, we can build on the same ide
 
 1. **Identify critical modules**
    - Profile existing code to locate hot spots (e.g., contact calculations, boundary conditions).
-   - Start with modules that are already heavily `@njit` decorated.
 2. **Create Rust crate**
    - Initialize a new `elastica_rust` crate using `maturin`.
    - Use [maturin](https://github.com/PyO3/maturin) to build and package the Python extension.

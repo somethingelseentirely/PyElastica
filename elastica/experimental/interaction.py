@@ -9,7 +9,6 @@ from elastica.interaction import (
     InteractionPlaneRigidBody,
 )
 
-from numba import njit
 from elastica._linalg import (
     _batch_dot,
     _batch_product_k_ik_to_ik,
@@ -66,7 +65,6 @@ class AnisotropicFrictionalPlaneRigidBody(NoForces, InteractionPlaneRigidBody):
         )
 
 
-@njit(cache=True)
 def anisotropic_friction_numba_rigid_body(
     plane_origin,
     plane_normal,

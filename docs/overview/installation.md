@@ -38,7 +38,6 @@ Details can be found [here](https://github.com/armantekinalp/MagnetoPyElastica).
 The core of PyElastica is developed using:
 
 - numpy
-- numba
 - scipy
 - tqdm
 - matplotlib (visualization)

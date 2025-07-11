@@ -7,7 +7,6 @@ import numpy as np
 
 from abc import ABC, abstractmethod
 
-from numba import njit
 
 from elastica._linalg import _batch_matvec, _batch_matrix_transpose
 from elastica._rotations import _get_rotation_matrix
@@ -179,7 +178,6 @@ class OneEndFixedBC(ConstraintBase):
         )
 
     @staticmethod
-    @njit(cache=True)
     def compute_constrain_values(
         position_collection,
         fixed_position_collection,
@@ -208,7 +206,6 @@ class OneEndFixedBC(ConstraintBase):
         director_collection[..., 0] = fixed_directors_collection
 
     @staticmethod
-    @njit(cache=True)
     def compute_constrain_rates(velocity_collection, omega_collection):
         """
         Compute contrain rates in numba njit decorator
@@ -358,7 +355,6 @@ class GeneralConstraint(ConstraintBase):
             )
 
     @staticmethod
-    @njit(cache=True)
     def nb_constrain_translational_values(
         position_collection, fixed_position_collection, indices, constraint_selector
     ) -> None:
@@ -391,7 +387,6 @@ class GeneralConstraint(ConstraintBase):
             ] + constraint_selector * fixed_position_collection[..., i]
 
     @staticmethod
-    @njit(cache=True)
     def nb_constrain_translational_rates(
         velocity_collection, indices, constraint_selector
     ) -> None:
@@ -420,7 +415,6 @@ class GeneralConstraint(ConstraintBase):
             ) * velocity_collection[..., k]
 
     @staticmethod
-    @njit(cache=True)
     def nb_constrain_rotational_rates(
         director_collection, omega_collection, indices, constraint_selector
     ) -> None:
@@ -535,7 +529,6 @@ class FixedConstraint(GeneralConstraint):
             )
 
     @staticmethod
-    @njit(cache=True)
     def nb_constraint_rotational_values(
         director_collection, fixed_director_collection, indices
     ) -> None:
@@ -556,7 +549,6 @@ class FixedConstraint(GeneralConstraint):
             director_collection[..., k] = fixed_director_collection[..., i]
 
     @staticmethod
-    @njit(cache=True)
     def nb_constrain_translational_values(
         position_collection, fixed_position_collection, indices
     ) -> None:
@@ -577,7 +569,6 @@ class FixedConstraint(GeneralConstraint):
             position_collection[..., k] = fixed_position_collection[..., i]
 
     @staticmethod
-    @njit(cache=True)
     def nb_constrain_translational_rates(velocity_collection, indices) -> None:
         """
         Compute constrain rates in numba njit decorator
@@ -597,7 +588,6 @@ class FixedConstraint(GeneralConstraint):
             velocity_collection[2, k] = 0.0
 
     @staticmethod
-    @njit(cache=True)
     def nb_constrain_rotational_rates(omega_collection, indices) -> None:
         """
         Compute constrain rates in numba njit decorator
