@@ -21,7 +21,6 @@ elif sys.version_info.minor < 8:
 
 from typing import Union
 
-from numba import njit
 import numpy as np
 
 from elastica.rod.rod_base import RodBase
@@ -187,7 +186,6 @@ def compute_twist(center_line, normal_collection):
     return total_twist, local_twist
 
 
-@njit(cache=True)
 def _compute_twist(center_line, normal_collection):
     """
     Parameters
@@ -325,7 +323,6 @@ def compute_writhe(center_line, segment_length, type_of_additional_segment):
     return total_writhe
 
 
-@njit(cache=True)
 def _compute_writhe(center_line):
     """
     Parameters
@@ -480,7 +477,6 @@ def compute_link(
     return total_link
 
 
-@njit(cache=True)
 def _compute_auxiliary_line(center_line, normal_collection, radius):
     """
     This function computes the auxiliary line using rod center line and normal collection.
@@ -535,7 +531,6 @@ def _compute_auxiliary_line(center_line, normal_collection, radius):
     return auxiliary_line
 
 
-@njit(cache=True)
 def _compute_link(center_line, auxiliary_line):
     """
 
@@ -612,7 +607,6 @@ def _compute_link(center_line, auxiliary_line):
     return total_link
 
 
-@njit(cache=True)
 def _compute_auxiliary_line_added_segments(
     beginning_direction, end_direction, auxiliary_line, segment_length
 ):
@@ -655,7 +649,6 @@ def _compute_auxiliary_line_added_segments(
     return new_auxiliary_line
 
 
-@njit(cache=True)
 def _compute_additional_segment(
     center_line, segment_length, type_of_additional_segment
 ):

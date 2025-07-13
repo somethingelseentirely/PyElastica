@@ -3,7 +3,6 @@ __doc__ = """ Numba implementation module containing interactions between a rod 
 
 import numpy as np
 from elastica.external_forces import NoForces
-from numba import njit
 from elastica.contact_utils import (
     _elements_to_nodes_inplace,
     _node_to_element_velocity,
@@ -40,7 +39,6 @@ def nodes_to_elements(input):
     )
 
 
-@njit(cache=True)
 def elements_to_nodes_inplace(vector_in_element_frame, vector_in_node_frame):
     raise NotImplementedError(
         "This function is removed in v0.3.2. Please use\n"
@@ -301,7 +299,6 @@ def anisotropic_friction(
 
 
 # Slender body module
-@njit(cache=True)
 def sum_over_elements(input):
     """
     This function sums all elements of the input array.
@@ -367,7 +364,6 @@ def node_to_element_pos_or_vel(vector_in_node_frame):
     )
 
 
-@njit(cache=True)
 def slender_body_forces(
     tangents, velocity_collection, dynamic_viscosity, lengths, radius, mass
 ):
@@ -551,7 +547,6 @@ class InteractionPlaneRigidBody:
         )
 
 
-@njit(cache=True)
 def apply_normal_force_numba_rigid_body(
     plane_origin,
     plane_normal,

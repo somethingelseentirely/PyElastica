@@ -2,11 +2,9 @@ __doc__ = (
     """These functions are used to synchronize periodic boundaries for ring rods.  """
 )
 
-from numba import njit
 from elastica.boundary_conditions import ConstraintBase
 
 
-@njit(cache=True)
 def _synchronize_periodic_boundary_of_vector_collection(input, periodic_idx):
     """
     This function synchronizes the periodic boundaries of a vector collection.
@@ -27,7 +25,6 @@ def _synchronize_periodic_boundary_of_vector_collection(input, periodic_idx):
             input[i, periodic_idx[0, k]] = input[i, periodic_idx[1, k]]
 
 
-@njit(cache=True)
 def _synchronize_periodic_boundary_of_matrix_collection(input, periodic_idx):
     """
     This function synchronizes the periodic boundaries of a matrix collection.
@@ -49,7 +46,6 @@ def _synchronize_periodic_boundary_of_matrix_collection(input, periodic_idx):
                 input[i, j, periodic_idx[0, k]] = input[i, j, periodic_idx[1, k]]
 
 
-@njit(cache=True)
 def _synchronize_periodic_boundary_of_scalar_collection(input, periodic_idx):
     """
     This function synchronizes the periodic boundaries of a scalar collection.

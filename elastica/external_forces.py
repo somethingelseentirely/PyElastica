@@ -7,7 +7,6 @@ from elastica._linalg import _batch_matvec
 from elastica.typing import SystemType, RodType
 from elastica.utils import _bspline
 
-from numba import njit
 from elastica._linalg import _batch_product_i_k_to_ik
 
 
@@ -88,7 +87,6 @@ class GravityForces(NoForces):
         )
 
     @staticmethod
-    @njit(cache=True)
     def compute_gravity_forces(acc_gravity, mass, external_forces):
         """
         This function add gravitational forces on the nodes. We are
@@ -153,7 +151,6 @@ class EndpointForces(NoForces):
         )
 
     @staticmethod
-    @njit(cache=True)
     def compute_end_point_forces(
         external_forces, start_force, end_force, time, ramp_up_time
     ):
@@ -350,7 +347,6 @@ class MuscleTorques(NoForces):
         )
 
     @staticmethod
-    @njit(cache=True)
     def compute_muscle_torques(
         time,
         my_spline,
@@ -387,7 +383,6 @@ class MuscleTorques(NoForces):
         )
 
 
-@njit(cache=True)
 def inplace_addition(external_force_or_torque, force_or_torque):
     """
     This function does inplace addition. First argument
@@ -410,7 +405,6 @@ def inplace_addition(external_force_or_torque, force_or_torque):
             external_force_or_torque[i, k] += force_or_torque[i, k]
 
 
-@njit(cache=True)
 def inplace_substraction(external_force_or_torque, force_or_torque):
     """
     This function does inplace substraction. First argument
